@@ -433,6 +433,30 @@ type Invoker interface {
 	//
 	// POST /test_request_integer_unix-seconds_nullable_array_array
 	TestRequestIntegerUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (*Error, error)
+	// TestRequestIntegerUnixtime invokes test_request_integer_unixtime operation.
+	//
+	// POST /test_request_integer_unixtime
+	TestRequestIntegerUnixtime(ctx context.Context, request OptUnixSeconds) (*Error, error)
+	// TestRequestIntegerUnixtimeArray invokes test_request_integer_unixtime_array operation.
+	//
+	// POST /test_request_integer_unixtime_array
+	TestRequestIntegerUnixtimeArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestIntegerUnixtimeArrayArray invokes test_request_integer_unixtime_array_array operation.
+	//
+	// POST /test_request_integer_unixtime_array_array
+	TestRequestIntegerUnixtimeArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestIntegerUnixtimeNullable invokes test_request_integer_unixtime_nullable operation.
+	//
+	// POST /test_request_integer_unixtime_nullable
+	TestRequestIntegerUnixtimeNullable(ctx context.Context, request OptNilUnixSeconds) (*Error, error)
+	// TestRequestIntegerUnixtimeNullableArray invokes test_request_integer_unixtime_nullable_array operation.
+	//
+	// POST /test_request_integer_unixtime_nullable_array
+	TestRequestIntegerUnixtimeNullableArray(ctx context.Context, request []NilUnixSeconds) (*Error, error)
+	// TestRequestIntegerUnixtimeNullableArrayArray invokes test_request_integer_unixtime_nullable_array_array operation.
+	//
+	// POST /test_request_integer_unixtime_nullable_array_array
+	TestRequestIntegerUnixtimeNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (*Error, error)
 	// TestRequestNull invokes test_request_null operation.
 	//
 	// POST /test_request_null
@@ -997,6 +1021,30 @@ type Invoker interface {
 	//
 	// POST /test_request_required_integer_unix-seconds_nullable_array_array
 	TestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (*Error, error)
+	// TestRequestRequiredIntegerUnixtime invokes test_request_required_integer_unixtime operation.
+	//
+	// POST /test_request_required_integer_unixtime
+	TestRequestRequiredIntegerUnixtime(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixtimeArray invokes test_request_required_integer_unixtime_array operation.
+	//
+	// POST /test_request_required_integer_unixtime_array
+	TestRequestRequiredIntegerUnixtimeArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixtimeArrayArray invokes test_request_required_integer_unixtime_array_array operation.
+	//
+	// POST /test_request_required_integer_unixtime_array_array
+	TestRequestRequiredIntegerUnixtimeArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredIntegerUnixtimeNullable invokes test_request_required_integer_unixtime_nullable operation.
+	//
+	// POST /test_request_required_integer_unixtime_nullable
+	TestRequestRequiredIntegerUnixtimeNullable(ctx context.Context, request NilUnixSeconds) (*Error, error)
+	// TestRequestRequiredIntegerUnixtimeNullableArray invokes test_request_required_integer_unixtime_nullable_array operation.
+	//
+	// POST /test_request_required_integer_unixtime_nullable_array
+	TestRequestRequiredIntegerUnixtimeNullableArray(ctx context.Context, request []NilUnixSeconds) (*Error, error)
+	// TestRequestRequiredIntegerUnixtimeNullableArrayArray invokes test_request_required_integer_unixtime_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_unixtime_nullable_array_array
+	TestRequestRequiredIntegerUnixtimeNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (*Error, error)
 	// TestRequestRequiredNull invokes test_request_required_null operation.
 	//
 	// POST /test_request_required_null
@@ -2029,6 +2077,30 @@ type Invoker interface {
 	//
 	// POST /test_request_required_string_unix-seconds_nullable_array_array
 	TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (*Error, error)
+	// TestRequestRequiredStringUnixtime invokes test_request_required_string_unixtime operation.
+	//
+	// POST /test_request_required_string_unixtime
+	TestRequestRequiredStringUnixtime(ctx context.Context, request time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixtimeArray invokes test_request_required_string_unixtime_array operation.
+	//
+	// POST /test_request_required_string_unixtime_array
+	TestRequestRequiredStringUnixtimeArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixtimeArrayArray invokes test_request_required_string_unixtime_array_array operation.
+	//
+	// POST /test_request_required_string_unixtime_array_array
+	TestRequestRequiredStringUnixtimeArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestRequiredStringUnixtimeNullable invokes test_request_required_string_unixtime_nullable operation.
+	//
+	// POST /test_request_required_string_unixtime_nullable
+	TestRequestRequiredStringUnixtimeNullable(ctx context.Context, request NilStringUnixSeconds) (*Error, error)
+	// TestRequestRequiredStringUnixtimeNullableArray invokes test_request_required_string_unixtime_nullable_array operation.
+	//
+	// POST /test_request_required_string_unixtime_nullable_array
+	TestRequestRequiredStringUnixtimeNullableArray(ctx context.Context, request []NilStringUnixSeconds) (*Error, error)
+	// TestRequestRequiredStringUnixtimeNullableArrayArray invokes test_request_required_string_unixtime_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_unixtime_nullable_array_array
+	TestRequestRequiredStringUnixtimeNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (*Error, error)
 	// TestRequestString invokes test_request_string operation.
 	//
 	// POST /test_request_string
@@ -2893,6 +2965,30 @@ type Invoker interface {
 	//
 	// POST /test_request_string_unix-seconds_nullable_array_array
 	TestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (*Error, error)
+	// TestRequestStringUnixtime invokes test_request_string_unixtime operation.
+	//
+	// POST /test_request_string_unixtime
+	TestRequestStringUnixtime(ctx context.Context, request OptStringUnixSeconds) (*Error, error)
+	// TestRequestStringUnixtimeArray invokes test_request_string_unixtime_array operation.
+	//
+	// POST /test_request_string_unixtime_array
+	TestRequestStringUnixtimeArray(ctx context.Context, request []time.Time) (*Error, error)
+	// TestRequestStringUnixtimeArrayArray invokes test_request_string_unixtime_array_array operation.
+	//
+	// POST /test_request_string_unixtime_array_array
+	TestRequestStringUnixtimeArrayArray(ctx context.Context, request [][]time.Time) (*Error, error)
+	// TestRequestStringUnixtimeNullable invokes test_request_string_unixtime_nullable operation.
+	//
+	// POST /test_request_string_unixtime_nullable
+	TestRequestStringUnixtimeNullable(ctx context.Context, request OptNilStringUnixSeconds) (*Error, error)
+	// TestRequestStringUnixtimeNullableArray invokes test_request_string_unixtime_nullable_array operation.
+	//
+	// POST /test_request_string_unixtime_nullable_array
+	TestRequestStringUnixtimeNullableArray(ctx context.Context, request []NilStringUnixSeconds) (*Error, error)
+	// TestRequestStringUnixtimeNullableArrayArray invokes test_request_string_unixtime_nullable_array_array operation.
+	//
+	// POST /test_request_string_unixtime_nullable_array_array
+	TestRequestStringUnixtimeNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (*Error, error)
 	// TestResponseAny invokes test_response_Any operation.
 	//
 	// POST /test_response_Any
@@ -3289,6 +3385,30 @@ type Invoker interface {
 	//
 	// POST /test_response_integer_unix-seconds_nullable_array_array
 	TestResponseIntegerUnixSecondsNullableArrayArray(ctx context.Context, request string) ([][]NilUnixSeconds, error)
+	// TestResponseIntegerUnixtime invokes test_response_integer_unixtime operation.
+	//
+	// POST /test_response_integer_unixtime
+	TestResponseIntegerUnixtime(ctx context.Context, request string) (time.Time, error)
+	// TestResponseIntegerUnixtimeArray invokes test_response_integer_unixtime_array operation.
+	//
+	// POST /test_response_integer_unixtime_array
+	TestResponseIntegerUnixtimeArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseIntegerUnixtimeArrayArray invokes test_response_integer_unixtime_array_array operation.
+	//
+	// POST /test_response_integer_unixtime_array_array
+	TestResponseIntegerUnixtimeArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseIntegerUnixtimeNullable invokes test_response_integer_unixtime_nullable operation.
+	//
+	// POST /test_response_integer_unixtime_nullable
+	TestResponseIntegerUnixtimeNullable(ctx context.Context, request string) (NilUnixSeconds, error)
+	// TestResponseIntegerUnixtimeNullableArray invokes test_response_integer_unixtime_nullable_array operation.
+	//
+	// POST /test_response_integer_unixtime_nullable_array
+	TestResponseIntegerUnixtimeNullableArray(ctx context.Context, request string) ([]NilUnixSeconds, error)
+	// TestResponseIntegerUnixtimeNullableArrayArray invokes test_response_integer_unixtime_nullable_array_array operation.
+	//
+	// POST /test_response_integer_unixtime_nullable_array_array
+	TestResponseIntegerUnixtimeNullableArrayArray(ctx context.Context, request string) ([][]NilUnixSeconds, error)
 	// TestResponseNull invokes test_response_null operation.
 	//
 	// POST /test_response_null
@@ -4321,6 +4441,30 @@ type Invoker interface {
 	//
 	// POST /test_response_string_unix-seconds_nullable_array_array
 	TestResponseStringUnixSecondsNullableArrayArray(ctx context.Context, request string) ([][]NilStringUnixSeconds, error)
+	// TestResponseStringUnixtime invokes test_response_string_unixtime operation.
+	//
+	// POST /test_response_string_unixtime
+	TestResponseStringUnixtime(ctx context.Context, request string) (time.Time, error)
+	// TestResponseStringUnixtimeArray invokes test_response_string_unixtime_array operation.
+	//
+	// POST /test_response_string_unixtime_array
+	TestResponseStringUnixtimeArray(ctx context.Context, request string) ([]time.Time, error)
+	// TestResponseStringUnixtimeArrayArray invokes test_response_string_unixtime_array_array operation.
+	//
+	// POST /test_response_string_unixtime_array_array
+	TestResponseStringUnixtimeArrayArray(ctx context.Context, request string) ([][]time.Time, error)
+	// TestResponseStringUnixtimeNullable invokes test_response_string_unixtime_nullable operation.
+	//
+	// POST /test_response_string_unixtime_nullable
+	TestResponseStringUnixtimeNullable(ctx context.Context, request string) (NilStringUnixSeconds, error)
+	// TestResponseStringUnixtimeNullableArray invokes test_response_string_unixtime_nullable_array operation.
+	//
+	// POST /test_response_string_unixtime_nullable_array
+	TestResponseStringUnixtimeNullableArray(ctx context.Context, request string) ([]NilStringUnixSeconds, error)
+	// TestResponseStringUnixtimeNullableArrayArray invokes test_response_string_unixtime_nullable_array_array operation.
+	//
+	// POST /test_response_string_unixtime_nullable_array_array
+	TestResponseStringUnixtimeNullableArrayArray(ctx context.Context, request string) ([][]NilStringUnixSeconds, error)
 }
 
 // Client implements OAS client.
@@ -4993,6 +5137,43 @@ func (c *Client) sendTestQueryParameter(ctx context.Context, request string, par
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range params.IntegerUnixArray {
+					if err := func() error {
+						return e.EncodeValue(conv.UnixSecondsToString(item))
+					}(); err != nil {
+						return errors.Wrapf(err, "[%d]", i)
+					}
+				}
+				return nil
+			})
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "integer_unixtime" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "integer_unixtime",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.UnixSecondsToString(params.IntegerUnixtime))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "integer_unixtime_array" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "integer_unixtime_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
+				for i, item := range params.IntegerUnixtimeArray {
 					if err := func() error {
 						return e.EncodeValue(conv.UnixSecondsToString(item))
 					}(); err != nil {
@@ -6473,6 +6654,43 @@ func (c *Client) sendTestQueryParameter(ctx context.Context, request string, par
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range params.StringUnixArray {
+					if err := func() error {
+						return e.EncodeValue(conv.UnixSecondsToString(item))
+					}(); err != nil {
+						return errors.Wrapf(err, "[%d]", i)
+					}
+				}
+				return nil
+			})
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "string_unixtime" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "string_unixtime",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.UnixSecondsToString(params.StringUnixtime))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "string_unixtime_array" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "string_unixtime_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
+				for i, item := range params.StringUnixtimeArray {
 					if err := func() error {
 						return e.EncodeValue(conv.UnixSecondsToString(item))
 					}(); err != nil {
@@ -14605,6 +14823,492 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullableArrayArray(ctx context
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerUnixSecondsNullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixtime invokes test_request_integer_unixtime operation.
+//
+// POST /test_request_integer_unixtime
+func (c *Client) TestRequestIntegerUnixtime(ctx context.Context, request OptUnixSeconds) (*Error, error) {
+	res, err := c.sendTestRequestIntegerUnixtime(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestIntegerUnixtime(ctx context.Context, request OptUnixSeconds) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unixtime"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_integer_unixtime"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixtimeOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_integer_unixtime"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestIntegerUnixtimeRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixtimeResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixtimeArray invokes test_request_integer_unixtime_array operation.
+//
+// POST /test_request_integer_unixtime_array
+func (c *Client) TestRequestIntegerUnixtimeArray(ctx context.Context, request []time.Time) (*Error, error) {
+	res, err := c.sendTestRequestIntegerUnixtimeArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestIntegerUnixtimeArray(ctx context.Context, request []time.Time) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unixtime_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_integer_unixtime_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixtimeArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_integer_unixtime_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestIntegerUnixtimeArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixtimeArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixtimeArrayArray invokes test_request_integer_unixtime_array_array operation.
+//
+// POST /test_request_integer_unixtime_array_array
+func (c *Client) TestRequestIntegerUnixtimeArrayArray(ctx context.Context, request [][]time.Time) (*Error, error) {
+	res, err := c.sendTestRequestIntegerUnixtimeArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestIntegerUnixtimeArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unixtime_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_integer_unixtime_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixtimeArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_integer_unixtime_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestIntegerUnixtimeArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixtimeArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixtimeNullable invokes test_request_integer_unixtime_nullable operation.
+//
+// POST /test_request_integer_unixtime_nullable
+func (c *Client) TestRequestIntegerUnixtimeNullable(ctx context.Context, request OptNilUnixSeconds) (*Error, error) {
+	res, err := c.sendTestRequestIntegerUnixtimeNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestIntegerUnixtimeNullable(ctx context.Context, request OptNilUnixSeconds) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unixtime_nullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_integer_unixtime_nullable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixtimeNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_integer_unixtime_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestIntegerUnixtimeNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixtimeNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixtimeNullableArray invokes test_request_integer_unixtime_nullable_array operation.
+//
+// POST /test_request_integer_unixtime_nullable_array
+func (c *Client) TestRequestIntegerUnixtimeNullableArray(ctx context.Context, request []NilUnixSeconds) (*Error, error) {
+	res, err := c.sendTestRequestIntegerUnixtimeNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestIntegerUnixtimeNullableArray(ctx context.Context, request []NilUnixSeconds) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unixtime_nullable_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_integer_unixtime_nullable_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixtimeNullableArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_integer_unixtime_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestIntegerUnixtimeNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixtimeNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixtimeNullableArrayArray invokes test_request_integer_unixtime_nullable_array_array operation.
+//
+// POST /test_request_integer_unixtime_nullable_array_array
+func (c *Client) TestRequestIntegerUnixtimeNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (*Error, error) {
+	res, err := c.sendTestRequestIntegerUnixtimeNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestIntegerUnixtimeNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unixtime_nullable_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_integer_unixtime_nullable_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixtimeNullableArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_integer_unixtime_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestIntegerUnixtimeNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixtimeNullableArrayArrayResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26026,6 +26730,492 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixtime invokes test_request_required_integer_unixtime operation.
+//
+// POST /test_request_required_integer_unixtime
+func (c *Client) TestRequestRequiredIntegerUnixtime(ctx context.Context, request time.Time) (*Error, error) {
+	res, err := c.sendTestRequestRequiredIntegerUnixtime(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredIntegerUnixtime(ctx context.Context, request time.Time) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unixtime"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_integer_unixtime"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixtimeOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_integer_unixtime"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredIntegerUnixtimeRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixtimeResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixtimeArray invokes test_request_required_integer_unixtime_array operation.
+//
+// POST /test_request_required_integer_unixtime_array
+func (c *Client) TestRequestRequiredIntegerUnixtimeArray(ctx context.Context, request []time.Time) (*Error, error) {
+	res, err := c.sendTestRequestRequiredIntegerUnixtimeArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredIntegerUnixtimeArray(ctx context.Context, request []time.Time) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unixtime_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_integer_unixtime_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixtimeArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_integer_unixtime_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredIntegerUnixtimeArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixtimeArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixtimeArrayArray invokes test_request_required_integer_unixtime_array_array operation.
+//
+// POST /test_request_required_integer_unixtime_array_array
+func (c *Client) TestRequestRequiredIntegerUnixtimeArrayArray(ctx context.Context, request [][]time.Time) (*Error, error) {
+	res, err := c.sendTestRequestRequiredIntegerUnixtimeArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredIntegerUnixtimeArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unixtime_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_integer_unixtime_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixtimeArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_integer_unixtime_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredIntegerUnixtimeArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixtimeArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixtimeNullable invokes test_request_required_integer_unixtime_nullable operation.
+//
+// POST /test_request_required_integer_unixtime_nullable
+func (c *Client) TestRequestRequiredIntegerUnixtimeNullable(ctx context.Context, request NilUnixSeconds) (*Error, error) {
+	res, err := c.sendTestRequestRequiredIntegerUnixtimeNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredIntegerUnixtimeNullable(ctx context.Context, request NilUnixSeconds) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unixtime_nullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_integer_unixtime_nullable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixtimeNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_integer_unixtime_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredIntegerUnixtimeNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixtimeNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixtimeNullableArray invokes test_request_required_integer_unixtime_nullable_array operation.
+//
+// POST /test_request_required_integer_unixtime_nullable_array
+func (c *Client) TestRequestRequiredIntegerUnixtimeNullableArray(ctx context.Context, request []NilUnixSeconds) (*Error, error) {
+	res, err := c.sendTestRequestRequiredIntegerUnixtimeNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredIntegerUnixtimeNullableArray(ctx context.Context, request []NilUnixSeconds) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unixtime_nullable_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_integer_unixtime_nullable_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixtimeNullableArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_integer_unixtime_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredIntegerUnixtimeNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixtimeNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixtimeNullableArrayArray invokes test_request_required_integer_unixtime_nullable_array_array operation.
+//
+// POST /test_request_required_integer_unixtime_nullable_array_array
+func (c *Client) TestRequestRequiredIntegerUnixtimeNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (*Error, error) {
+	res, err := c.sendTestRequestRequiredIntegerUnixtimeNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredIntegerUnixtimeNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unixtime_nullable_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_integer_unixtime_nullable_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixtimeNullableArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_integer_unixtime_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredIntegerUnixtimeNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixtimeNullableArrayArrayResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -46931,6 +48121,492 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullableArrayArray(ctx 
 	return result, nil
 }
 
+// TestRequestRequiredStringUnixtime invokes test_request_required_string_unixtime operation.
+//
+// POST /test_request_required_string_unixtime
+func (c *Client) TestRequestRequiredStringUnixtime(ctx context.Context, request time.Time) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringUnixtime(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringUnixtime(ctx context.Context, request time.Time) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unixtime"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_unixtime"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixtimeOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_unixtime"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringUnixtimeRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringUnixtimeResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixtimeArray invokes test_request_required_string_unixtime_array operation.
+//
+// POST /test_request_required_string_unixtime_array
+func (c *Client) TestRequestRequiredStringUnixtimeArray(ctx context.Context, request []time.Time) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringUnixtimeArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringUnixtimeArray(ctx context.Context, request []time.Time) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unixtime_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_unixtime_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixtimeArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_unixtime_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringUnixtimeArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringUnixtimeArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixtimeArrayArray invokes test_request_required_string_unixtime_array_array operation.
+//
+// POST /test_request_required_string_unixtime_array_array
+func (c *Client) TestRequestRequiredStringUnixtimeArrayArray(ctx context.Context, request [][]time.Time) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringUnixtimeArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringUnixtimeArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unixtime_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_unixtime_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixtimeArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_unixtime_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringUnixtimeArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringUnixtimeArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixtimeNullable invokes test_request_required_string_unixtime_nullable operation.
+//
+// POST /test_request_required_string_unixtime_nullable
+func (c *Client) TestRequestRequiredStringUnixtimeNullable(ctx context.Context, request NilStringUnixSeconds) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringUnixtimeNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringUnixtimeNullable(ctx context.Context, request NilStringUnixSeconds) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unixtime_nullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_unixtime_nullable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixtimeNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_unixtime_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringUnixtimeNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringUnixtimeNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixtimeNullableArray invokes test_request_required_string_unixtime_nullable_array operation.
+//
+// POST /test_request_required_string_unixtime_nullable_array
+func (c *Client) TestRequestRequiredStringUnixtimeNullableArray(ctx context.Context, request []NilStringUnixSeconds) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringUnixtimeNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringUnixtimeNullableArray(ctx context.Context, request []NilStringUnixSeconds) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unixtime_nullable_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_unixtime_nullable_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixtimeNullableArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_unixtime_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringUnixtimeNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringUnixtimeNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixtimeNullableArrayArray invokes test_request_required_string_unixtime_nullable_array_array operation.
+//
+// POST /test_request_required_string_unixtime_nullable_array_array
+func (c *Client) TestRequestRequiredStringUnixtimeNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringUnixtimeNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringUnixtimeNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unixtime_nullable_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_required_string_unixtime_nullable_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixtimeNullableArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_unixtime_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringUnixtimeNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringUnixtimeNullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TestRequestString invokes test_request_string operation.
 //
 // POST /test_request_string
@@ -64427,6 +66103,492 @@ func (c *Client) sendTestRequestStringUnixSecondsNullableArrayArray(ctx context.
 	return result, nil
 }
 
+// TestRequestStringUnixtime invokes test_request_string_unixtime operation.
+//
+// POST /test_request_string_unixtime
+func (c *Client) TestRequestStringUnixtime(ctx context.Context, request OptStringUnixSeconds) (*Error, error) {
+	res, err := c.sendTestRequestStringUnixtime(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringUnixtime(ctx context.Context, request OptStringUnixSeconds) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unixtime"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_unixtime"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixtimeOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_unixtime"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringUnixtimeRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringUnixtimeResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixtimeArray invokes test_request_string_unixtime_array operation.
+//
+// POST /test_request_string_unixtime_array
+func (c *Client) TestRequestStringUnixtimeArray(ctx context.Context, request []time.Time) (*Error, error) {
+	res, err := c.sendTestRequestStringUnixtimeArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringUnixtimeArray(ctx context.Context, request []time.Time) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unixtime_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_unixtime_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixtimeArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_unixtime_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringUnixtimeArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringUnixtimeArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixtimeArrayArray invokes test_request_string_unixtime_array_array operation.
+//
+// POST /test_request_string_unixtime_array_array
+func (c *Client) TestRequestStringUnixtimeArrayArray(ctx context.Context, request [][]time.Time) (*Error, error) {
+	res, err := c.sendTestRequestStringUnixtimeArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringUnixtimeArrayArray(ctx context.Context, request [][]time.Time) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unixtime_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_unixtime_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixtimeArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_unixtime_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringUnixtimeArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringUnixtimeArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixtimeNullable invokes test_request_string_unixtime_nullable operation.
+//
+// POST /test_request_string_unixtime_nullable
+func (c *Client) TestRequestStringUnixtimeNullable(ctx context.Context, request OptNilStringUnixSeconds) (*Error, error) {
+	res, err := c.sendTestRequestStringUnixtimeNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringUnixtimeNullable(ctx context.Context, request OptNilStringUnixSeconds) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unixtime_nullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_unixtime_nullable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixtimeNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_unixtime_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringUnixtimeNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringUnixtimeNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixtimeNullableArray invokes test_request_string_unixtime_nullable_array operation.
+//
+// POST /test_request_string_unixtime_nullable_array
+func (c *Client) TestRequestStringUnixtimeNullableArray(ctx context.Context, request []NilStringUnixSeconds) (*Error, error) {
+	res, err := c.sendTestRequestStringUnixtimeNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringUnixtimeNullableArray(ctx context.Context, request []NilStringUnixSeconds) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unixtime_nullable_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_unixtime_nullable_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixtimeNullableArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_unixtime_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringUnixtimeNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringUnixtimeNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixtimeNullableArrayArray invokes test_request_string_unixtime_nullable_array_array operation.
+//
+// POST /test_request_string_unixtime_nullable_array_array
+func (c *Client) TestRequestStringUnixtimeNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (*Error, error) {
+	res, err := c.sendTestRequestStringUnixtimeNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringUnixtimeNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unixtime_nullable_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_request_string_unixtime_nullable_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixtimeNullableArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_unixtime_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringUnixtimeNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringUnixtimeNullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TestResponseAny invokes test_response_Any operation.
 //
 // POST /test_response_Any
@@ -72439,6 +74601,492 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullableArrayArray(ctx contex
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerUnixSecondsNullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixtime invokes test_response_integer_unixtime operation.
+//
+// POST /test_response_integer_unixtime
+func (c *Client) TestResponseIntegerUnixtime(ctx context.Context, request string) (time.Time, error) {
+	res, err := c.sendTestResponseIntegerUnixtime(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseIntegerUnixtime(ctx context.Context, request string) (res time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unixtime"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_integer_unixtime"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixtimeOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_integer_unixtime"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseIntegerUnixtimeRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixtimeResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixtimeArray invokes test_response_integer_unixtime_array operation.
+//
+// POST /test_response_integer_unixtime_array
+func (c *Client) TestResponseIntegerUnixtimeArray(ctx context.Context, request string) ([]time.Time, error) {
+	res, err := c.sendTestResponseIntegerUnixtimeArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseIntegerUnixtimeArray(ctx context.Context, request string) (res []time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unixtime_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_integer_unixtime_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixtimeArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_integer_unixtime_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseIntegerUnixtimeArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixtimeArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixtimeArrayArray invokes test_response_integer_unixtime_array_array operation.
+//
+// POST /test_response_integer_unixtime_array_array
+func (c *Client) TestResponseIntegerUnixtimeArrayArray(ctx context.Context, request string) ([][]time.Time, error) {
+	res, err := c.sendTestResponseIntegerUnixtimeArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseIntegerUnixtimeArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unixtime_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_integer_unixtime_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixtimeArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_integer_unixtime_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseIntegerUnixtimeArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixtimeArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixtimeNullable invokes test_response_integer_unixtime_nullable operation.
+//
+// POST /test_response_integer_unixtime_nullable
+func (c *Client) TestResponseIntegerUnixtimeNullable(ctx context.Context, request string) (NilUnixSeconds, error) {
+	res, err := c.sendTestResponseIntegerUnixtimeNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseIntegerUnixtimeNullable(ctx context.Context, request string) (res NilUnixSeconds, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unixtime_nullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_integer_unixtime_nullable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixtimeNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_integer_unixtime_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseIntegerUnixtimeNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixtimeNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixtimeNullableArray invokes test_response_integer_unixtime_nullable_array operation.
+//
+// POST /test_response_integer_unixtime_nullable_array
+func (c *Client) TestResponseIntegerUnixtimeNullableArray(ctx context.Context, request string) ([]NilUnixSeconds, error) {
+	res, err := c.sendTestResponseIntegerUnixtimeNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseIntegerUnixtimeNullableArray(ctx context.Context, request string) (res []NilUnixSeconds, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unixtime_nullable_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_integer_unixtime_nullable_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixtimeNullableArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_integer_unixtime_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseIntegerUnixtimeNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixtimeNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixtimeNullableArrayArray invokes test_response_integer_unixtime_nullable_array_array operation.
+//
+// POST /test_response_integer_unixtime_nullable_array_array
+func (c *Client) TestResponseIntegerUnixtimeNullableArrayArray(ctx context.Context, request string) ([][]NilUnixSeconds, error) {
+	res, err := c.sendTestResponseIntegerUnixtimeNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseIntegerUnixtimeNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixSeconds, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unixtime_nullable_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_integer_unixtime_nullable_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixtimeNullableArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_integer_unixtime_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseIntegerUnixtimeNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixtimeNullableArrayArrayResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -93337,6 +95985,492 @@ func (c *Client) sendTestResponseStringUnixSecondsNullableArrayArray(ctx context
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringUnixSecondsNullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixtime invokes test_response_string_unixtime operation.
+//
+// POST /test_response_string_unixtime
+func (c *Client) TestResponseStringUnixtime(ctx context.Context, request string) (time.Time, error) {
+	res, err := c.sendTestResponseStringUnixtime(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringUnixtime(ctx context.Context, request string) (res time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unixtime"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_unixtime"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixtimeOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_unixtime"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringUnixtimeRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringUnixtimeResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixtimeArray invokes test_response_string_unixtime_array operation.
+//
+// POST /test_response_string_unixtime_array
+func (c *Client) TestResponseStringUnixtimeArray(ctx context.Context, request string) ([]time.Time, error) {
+	res, err := c.sendTestResponseStringUnixtimeArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringUnixtimeArray(ctx context.Context, request string) (res []time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unixtime_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_unixtime_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixtimeArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_unixtime_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringUnixtimeArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringUnixtimeArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixtimeArrayArray invokes test_response_string_unixtime_array_array operation.
+//
+// POST /test_response_string_unixtime_array_array
+func (c *Client) TestResponseStringUnixtimeArrayArray(ctx context.Context, request string) ([][]time.Time, error) {
+	res, err := c.sendTestResponseStringUnixtimeArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringUnixtimeArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unixtime_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_unixtime_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixtimeArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_unixtime_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringUnixtimeArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringUnixtimeArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixtimeNullable invokes test_response_string_unixtime_nullable operation.
+//
+// POST /test_response_string_unixtime_nullable
+func (c *Client) TestResponseStringUnixtimeNullable(ctx context.Context, request string) (NilStringUnixSeconds, error) {
+	res, err := c.sendTestResponseStringUnixtimeNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringUnixtimeNullable(ctx context.Context, request string) (res NilStringUnixSeconds, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unixtime_nullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_unixtime_nullable"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixtimeNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_unixtime_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringUnixtimeNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringUnixtimeNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixtimeNullableArray invokes test_response_string_unixtime_nullable_array operation.
+//
+// POST /test_response_string_unixtime_nullable_array
+func (c *Client) TestResponseStringUnixtimeNullableArray(ctx context.Context, request string) ([]NilStringUnixSeconds, error) {
+	res, err := c.sendTestResponseStringUnixtimeNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringUnixtimeNullableArray(ctx context.Context, request string) (res []NilStringUnixSeconds, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unixtime_nullable_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_unixtime_nullable_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixtimeNullableArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_unixtime_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringUnixtimeNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringUnixtimeNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixtimeNullableArrayArray invokes test_response_string_unixtime_nullable_array_array operation.
+//
+// POST /test_response_string_unixtime_nullable_array_array
+func (c *Client) TestResponseStringUnixtimeNullableArrayArray(ctx context.Context, request string) ([][]NilStringUnixSeconds, error) {
+	res, err := c.sendTestResponseStringUnixtimeNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringUnixtimeNullableArrayArray(ctx context.Context, request string) (res [][]NilStringUnixSeconds, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unixtime_nullable_array_array"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.URLTemplateKey.String("/test_response_string_unixtime_nullable_array_array"),
+	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixtimeNullableArrayArrayOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_unixtime_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringUnixtimeNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	body := resp.Body
+	defer func() {
+		// Drain the body to EOF before closing, so the underlying
+		// connection can be reused by the Transport regardless of the
+		// response status code. See https://github.com/ogen-go/ogen/issues/1670.
+		_, _ = io.Copy(io.Discard, body)
+		_ = body.Close()
+	}()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringUnixtimeNullableArrayArrayResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

@@ -343,6 +343,27 @@
 						}
 					},
 					{
+						"name": "integer_unixtime",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "unixtime"
+						}
+					},
+					{
+						"name": "integer_unixtime_array",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "integer",
+								"format": "unixtime"
+							}
+						}
+					},
+					{
 						"name": "number",
 						"in": "query",
 						"required": true,
@@ -1179,6 +1200,27 @@
 						}
 					},
 					{
+						"name": "string_unixtime",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"format": "unixtime"
+						}
+					},
+					{
+						"name": "string_unixtime_array",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string",
+								"format": "unixtime"
+							}
+						}
+					},
+					{
 						"name": "string_uri",
 						"in": "query",
 						"required": true,
@@ -1392,6 +1434,13 @@
 										"items": {
 											"type": "integer",
 											"format": "unix-seconds"
+										}
+									},
+									"required_array_integer_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "unixtime"
 										}
 									},
 									"required_array_null": {
@@ -1678,6 +1727,13 @@
 											"format": "unix-seconds"
 										}
 									},
+									"required_array_string_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unixtime"
+										}
+									},
 									"required_array_string_uri": {
 										"type": "array",
 										"items": {
@@ -1857,6 +1913,16 @@
 											"items": {
 												"type": "integer",
 												"format": "unix-seconds"
+											}
+										}
+									},
+									"required_double_array_integer_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "unixtime"
 											}
 										}
 									},
@@ -2267,6 +2333,16 @@
 											}
 										}
 									},
+									"required_double_array_string_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unixtime"
+											}
+										}
+									},
 									"required_double_array_string_uri": {
 										"type": "array",
 										"items": {
@@ -2345,6 +2421,10 @@
 									"required_integer_unix-seconds": {
 										"type": "integer",
 										"format": "unix-seconds"
+									},
+									"required_integer_unixtime": {
+										"type": "integer",
+										"format": "unixtime"
 									},
 									"required_null": {
 										"type": "null"
@@ -2507,6 +2587,10 @@
 										"type": "string",
 										"format": "unix-seconds"
 									},
+									"required_string_unixtime": {
+										"type": "string",
+										"format": "unixtime"
+									},
 									"required_string_uri": {
 										"type": "string",
 										"format": "uri"
@@ -2628,6 +2712,13 @@
 										"items": {
 											"type": "integer",
 											"format": "unix-seconds"
+										}
+									},
+									"optional_array_integer_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "unixtime"
 										}
 									},
 									"optional_array_null": {
@@ -2914,6 +3005,13 @@
 											"format": "unix-seconds"
 										}
 									},
+									"optional_array_string_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unixtime"
+										}
+									},
 									"optional_array_string_uri": {
 										"type": "array",
 										"items": {
@@ -3093,6 +3191,16 @@
 											"items": {
 												"type": "integer",
 												"format": "unix-seconds"
+											}
+										}
+									},
+									"optional_double_array_integer_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "unixtime"
 											}
 										}
 									},
@@ -3503,6 +3611,16 @@
 											}
 										}
 									},
+									"optional_double_array_string_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unixtime"
+											}
+										}
+									},
 									"optional_double_array_string_uri": {
 										"type": "array",
 										"items": {
@@ -3581,6 +3699,10 @@
 									"optional_integer_unix-seconds": {
 										"type": "integer",
 										"format": "unix-seconds"
+									},
+									"optional_integer_unixtime": {
+										"type": "integer",
+										"format": "unixtime"
 									},
 									"optional_null": {
 										"type": "null"
@@ -3743,6 +3865,10 @@
 										"type": "string",
 										"format": "unix-seconds"
 									},
+									"optional_string_unixtime": {
+										"type": "string",
+										"format": "unixtime"
+									},
 									"optional_string_uri": {
 										"type": "string",
 										"format": "uri"
@@ -3771,6 +3897,7 @@
 									"required_array_integer_unix-milli",
 									"required_array_integer_unix-nano",
 									"required_array_integer_unix-seconds",
+									"required_array_integer_unixtime",
 									"required_array_null",
 									"required_array_number",
 									"required_array_number_decimal",
@@ -3812,6 +3939,7 @@
 									"required_array_string_unix-milli",
 									"required_array_string_unix-nano",
 									"required_array_string_unix-seconds",
+									"required_array_string_unixtime",
 									"required_array_string_uri",
 									"required_array_string_uuid",
 									"required_boolean",
@@ -3832,6 +3960,7 @@
 									"required_double_array_integer_unix-milli",
 									"required_double_array_integer_unix-nano",
 									"required_double_array_integer_unix-seconds",
+									"required_double_array_integer_unixtime",
 									"required_double_array_null",
 									"required_double_array_number",
 									"required_double_array_number_decimal",
@@ -3873,6 +4002,7 @@
 									"required_double_array_string_unix-milli",
 									"required_double_array_string_unix-nano",
 									"required_double_array_string_unix-seconds",
+									"required_double_array_string_unixtime",
 									"required_double_array_string_uri",
 									"required_double_array_string_uuid",
 									"required_integer",
@@ -3890,6 +4020,7 @@
 									"required_integer_unix-milli",
 									"required_integer_unix-nano",
 									"required_integer_unix-seconds",
+									"required_integer_unixtime",
 									"required_null",
 									"required_number",
 									"required_number_decimal",
@@ -3931,6 +4062,7 @@
 									"required_string_unix-milli",
 									"required_string_unix-nano",
 									"required_string_unix-seconds",
+									"required_string_unixtime",
 									"required_string_uri",
 									"required_string_uuid"
 								]
@@ -6285,6 +6417,153 @@
 				}
 			}
 		},
+		"/test_request_integer_unixtime": {
+			"post": {
+				"operationId": "test_request_integer_unixtime",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "unixtime"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_unixtime_array": {
+			"post": {
+				"operationId": "test_request_integer_unixtime_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "unixtime"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_unixtime_array_array": {
+			"post": {
+				"operationId": "test_request_integer_unixtime_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "unixtime"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_unixtime_nullable": {
+			"post": {
+				"operationId": "test_request_integer_unixtime_nullable",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "unixtime",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_unixtime_nullable_array": {
+			"post": {
+				"operationId": "test_request_integer_unixtime_nullable_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "unixtime",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_unixtime_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_integer_unixtime_nullable_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "unixtime",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
 		"/test_request_null": {
 			"post": {
 				"operationId": "test_request_null",
@@ -7467,6 +7746,13 @@
 											"format": "unix-seconds"
 										}
 									},
+									"required_array_integer_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "unixtime"
+										}
+									},
 									"required_array_null": {
 										"type": "array",
 										"items": {
@@ -7751,6 +8037,13 @@
 											"format": "unix-seconds"
 										}
 									},
+									"required_array_string_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unixtime"
+										}
+									},
 									"required_array_string_uri": {
 										"type": "array",
 										"items": {
@@ -7930,6 +8223,16 @@
 											"items": {
 												"type": "integer",
 												"format": "unix-seconds"
+											}
+										}
+									},
+									"required_double_array_integer_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "unixtime"
 											}
 										}
 									},
@@ -8340,6 +8643,16 @@
 											}
 										}
 									},
+									"required_double_array_string_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unixtime"
+											}
+										}
+									},
 									"required_double_array_string_uri": {
 										"type": "array",
 										"items": {
@@ -8418,6 +8731,10 @@
 									"required_integer_unix-seconds": {
 										"type": "integer",
 										"format": "unix-seconds"
+									},
+									"required_integer_unixtime": {
+										"type": "integer",
+										"format": "unixtime"
 									},
 									"required_null": {
 										"type": "null"
@@ -8580,6 +8897,10 @@
 										"type": "string",
 										"format": "unix-seconds"
 									},
+									"required_string_unixtime": {
+										"type": "string",
+										"format": "unixtime"
+									},
 									"required_string_uri": {
 										"type": "string",
 										"format": "uri"
@@ -8701,6 +9022,13 @@
 										"items": {
 											"type": "integer",
 											"format": "unix-seconds"
+										}
+									},
+									"optional_array_integer_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "unixtime"
 										}
 									},
 									"optional_array_null": {
@@ -8987,6 +9315,13 @@
 											"format": "unix-seconds"
 										}
 									},
+									"optional_array_string_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unixtime"
+										}
+									},
 									"optional_array_string_uri": {
 										"type": "array",
 										"items": {
@@ -9166,6 +9501,16 @@
 											"items": {
 												"type": "integer",
 												"format": "unix-seconds"
+											}
+										}
+									},
+									"optional_double_array_integer_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "unixtime"
 											}
 										}
 									},
@@ -9576,6 +9921,16 @@
 											}
 										}
 									},
+									"optional_double_array_string_unixtime": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unixtime"
+											}
+										}
+									},
 									"optional_double_array_string_uri": {
 										"type": "array",
 										"items": {
@@ -9654,6 +10009,10 @@
 									"optional_integer_unix-seconds": {
 										"type": "integer",
 										"format": "unix-seconds"
+									},
+									"optional_integer_unixtime": {
+										"type": "integer",
+										"format": "unixtime"
 									},
 									"optional_null": {
 										"type": "null"
@@ -9816,6 +10175,10 @@
 										"type": "string",
 										"format": "unix-seconds"
 									},
+									"optional_string_unixtime": {
+										"type": "string",
+										"format": "unixtime"
+									},
 									"optional_string_uri": {
 										"type": "string",
 										"format": "uri"
@@ -9844,6 +10207,7 @@
 									"required_array_integer_unix-milli",
 									"required_array_integer_unix-nano",
 									"required_array_integer_unix-seconds",
+									"required_array_integer_unixtime",
 									"required_array_null",
 									"required_array_number",
 									"required_array_number_decimal",
@@ -9885,6 +10249,7 @@
 									"required_array_string_unix-milli",
 									"required_array_string_unix-nano",
 									"required_array_string_unix-seconds",
+									"required_array_string_unixtime",
 									"required_array_string_uri",
 									"required_array_string_uuid",
 									"required_boolean",
@@ -9905,6 +10270,7 @@
 									"required_double_array_integer_unix-milli",
 									"required_double_array_integer_unix-nano",
 									"required_double_array_integer_unix-seconds",
+									"required_double_array_integer_unixtime",
 									"required_double_array_null",
 									"required_double_array_number",
 									"required_double_array_number_decimal",
@@ -9946,6 +10312,7 @@
 									"required_double_array_string_unix-milli",
 									"required_double_array_string_unix-nano",
 									"required_double_array_string_unix-seconds",
+									"required_double_array_string_unixtime",
 									"required_double_array_string_uri",
 									"required_double_array_string_uuid",
 									"required_integer",
@@ -9963,6 +10330,7 @@
 									"required_integer_unix-milli",
 									"required_integer_unix-nano",
 									"required_integer_unix-seconds",
+									"required_integer_unixtime",
 									"required_null",
 									"required_number",
 									"required_number_decimal",
@@ -10004,6 +10372,7 @@
 									"required_string_unix-milli",
 									"required_string_unix-nano",
 									"required_string_unix-seconds",
+									"required_string_unixtime",
 									"required_string_uri",
 									"required_string_uuid"
 								]
@@ -12440,6 +12809,159 @@
 									"items": {
 										"type": "integer",
 										"format": "unix",
+										"nullable": true
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_unixtime": {
+			"post": {
+				"operationId": "test_request_required_integer_unixtime",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "unixtime"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_unixtime_array": {
+			"post": {
+				"operationId": "test_request_required_integer_unixtime_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "unixtime"
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_unixtime_array_array": {
+			"post": {
+				"operationId": "test_request_required_integer_unixtime_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "unixtime"
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_unixtime_nullable": {
+			"post": {
+				"operationId": "test_request_required_integer_unixtime_nullable",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "unixtime",
+								"nullable": true
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_unixtime_nullable_array": {
+			"post": {
+				"operationId": "test_request_required_integer_unixtime_nullable_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "unixtime",
+									"nullable": true
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_unixtime_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_required_integer_unixtime_nullable_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "unixtime",
 										"nullable": true
 									}
 								}
@@ -18710,6 +19232,159 @@
 				}
 			}
 		},
+		"/test_request_required_string_unixtime": {
+			"post": {
+				"operationId": "test_request_required_string_unixtime",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unixtime"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unixtime_array": {
+			"post": {
+				"operationId": "test_request_required_string_unixtime_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unixtime"
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unixtime_array_array": {
+			"post": {
+				"operationId": "test_request_required_string_unixtime_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unixtime"
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unixtime_nullable": {
+			"post": {
+				"operationId": "test_request_required_string_unixtime_nullable",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unixtime",
+								"nullable": true
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unixtime_nullable_array": {
+			"post": {
+				"operationId": "test_request_required_string_unixtime_nullable_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unixtime",
+									"nullable": true
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unixtime_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_required_string_unixtime_nullable_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unixtime",
+										"nullable": true
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
 		"/test_request_required_string_uri": {
 			"post": {
 				"operationId": "test_request_required_string_uri",
@@ -24008,6 +24683,153 @@
 				}
 			}
 		},
+		"/test_request_string_unixtime": {
+			"post": {
+				"operationId": "test_request_string_unixtime",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unixtime"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unixtime_array": {
+			"post": {
+				"operationId": "test_request_string_unixtime_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unixtime"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unixtime_array_array": {
+			"post": {
+				"operationId": "test_request_string_unixtime_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unixtime"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unixtime_nullable": {
+			"post": {
+				"operationId": "test_request_string_unixtime_nullable",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unixtime",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unixtime_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_unixtime_nullable_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unixtime",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unixtime_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_unixtime_nullable_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unixtime",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
 		"/test_request_string_uri": {
 			"post": {
 				"operationId": "test_request_string_uri",
@@ -24469,6 +25291,13 @@
 												"format": "unix-seconds"
 											}
 										},
+										"required_array_integer_unixtime": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "unixtime"
+											}
+										},
 										"required_array_null": {
 											"type": "array",
 											"items": {
@@ -24753,6 +25582,13 @@
 												"format": "unix-seconds"
 											}
 										},
+										"required_array_string_unixtime": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unixtime"
+											}
+										},
 										"required_array_string_uri": {
 											"type": "array",
 											"items": {
@@ -24932,6 +25768,16 @@
 												"items": {
 													"type": "integer",
 													"format": "unix-seconds"
+												}
+											}
+										},
+										"required_double_array_integer_unixtime": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "integer",
+													"format": "unixtime"
 												}
 											}
 										},
@@ -25342,6 +26188,16 @@
 												}
 											}
 										},
+										"required_double_array_string_unixtime": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "unixtime"
+												}
+											}
+										},
 										"required_double_array_string_uri": {
 											"type": "array",
 											"items": {
@@ -25420,6 +26276,10 @@
 										"required_integer_unix-seconds": {
 											"type": "integer",
 											"format": "unix-seconds"
+										},
+										"required_integer_unixtime": {
+											"type": "integer",
+											"format": "unixtime"
 										},
 										"required_null": {
 											"type": "null"
@@ -25582,6 +26442,10 @@
 											"type": "string",
 											"format": "unix-seconds"
 										},
+										"required_string_unixtime": {
+											"type": "string",
+											"format": "unixtime"
+										},
 										"required_string_uri": {
 											"type": "string",
 											"format": "uri"
@@ -25703,6 +26567,13 @@
 											"items": {
 												"type": "integer",
 												"format": "unix-seconds"
+											}
+										},
+										"optional_array_integer_unixtime": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "unixtime"
 											}
 										},
 										"optional_array_null": {
@@ -25989,6 +26860,13 @@
 												"format": "unix-seconds"
 											}
 										},
+										"optional_array_string_unixtime": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unixtime"
+											}
+										},
 										"optional_array_string_uri": {
 											"type": "array",
 											"items": {
@@ -26168,6 +27046,16 @@
 												"items": {
 													"type": "integer",
 													"format": "unix-seconds"
+												}
+											}
+										},
+										"optional_double_array_integer_unixtime": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "integer",
+													"format": "unixtime"
 												}
 											}
 										},
@@ -26578,6 +27466,16 @@
 												}
 											}
 										},
+										"optional_double_array_string_unixtime": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "unixtime"
+												}
+											}
+										},
 										"optional_double_array_string_uri": {
 											"type": "array",
 											"items": {
@@ -26656,6 +27554,10 @@
 										"optional_integer_unix-seconds": {
 											"type": "integer",
 											"format": "unix-seconds"
+										},
+										"optional_integer_unixtime": {
+											"type": "integer",
+											"format": "unixtime"
 										},
 										"optional_null": {
 											"type": "null"
@@ -26818,6 +27720,10 @@
 											"type": "string",
 											"format": "unix-seconds"
 										},
+										"optional_string_unixtime": {
+											"type": "string",
+											"format": "unixtime"
+										},
 										"optional_string_uri": {
 											"type": "string",
 											"format": "uri"
@@ -26846,6 +27752,7 @@
 										"required_array_integer_unix-milli",
 										"required_array_integer_unix-nano",
 										"required_array_integer_unix-seconds",
+										"required_array_integer_unixtime",
 										"required_array_null",
 										"required_array_number",
 										"required_array_number_decimal",
@@ -26887,6 +27794,7 @@
 										"required_array_string_unix-milli",
 										"required_array_string_unix-nano",
 										"required_array_string_unix-seconds",
+										"required_array_string_unixtime",
 										"required_array_string_uri",
 										"required_array_string_uuid",
 										"required_boolean",
@@ -26907,6 +27815,7 @@
 										"required_double_array_integer_unix-milli",
 										"required_double_array_integer_unix-nano",
 										"required_double_array_integer_unix-seconds",
+										"required_double_array_integer_unixtime",
 										"required_double_array_null",
 										"required_double_array_number",
 										"required_double_array_number_decimal",
@@ -26948,6 +27857,7 @@
 										"required_double_array_string_unix-milli",
 										"required_double_array_string_unix-nano",
 										"required_double_array_string_unix-seconds",
+										"required_double_array_string_unixtime",
 										"required_double_array_string_uri",
 										"required_double_array_string_uuid",
 										"required_integer",
@@ -26965,6 +27875,7 @@
 										"required_integer_unix-milli",
 										"required_integer_unix-nano",
 										"required_integer_unix-seconds",
+										"required_integer_unixtime",
 										"required_null",
 										"required_number",
 										"required_number_decimal",
@@ -27006,6 +27917,7 @@
 										"required_string_unix-milli",
 										"required_string_unix-nano",
 										"required_string_unix-seconds",
+										"required_string_unixtime",
 										"required_string_uri",
 										"required_string_uuid"
 									]
@@ -29346,6 +30258,153 @@
 										"items": {
 											"type": "integer",
 											"format": "unix",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_unixtime": {
+			"post": {
+				"operationId": "test_response_integer_unixtime",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer",
+									"format": "unixtime"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_unixtime_array": {
+			"post": {
+				"operationId": "test_response_integer_unixtime_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "unixtime"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_unixtime_array_array": {
+			"post": {
+				"operationId": "test_response_integer_unixtime_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "unixtime"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_unixtime_nullable": {
+			"post": {
+				"operationId": "test_response_integer_unixtime_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer",
+									"format": "unixtime",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_unixtime_nullable_array": {
+			"post": {
+				"operationId": "test_response_integer_unixtime_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "unixtime",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_unixtime_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_integer_unixtime_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "unixtime",
 											"nullable": true
 										}
 									}
@@ -35355,6 +36414,153 @@
 										"items": {
 											"type": "string",
 											"format": "unix",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unixtime": {
+			"post": {
+				"operationId": "test_response_string_unixtime",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "unixtime"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unixtime_array": {
+			"post": {
+				"operationId": "test_response_string_unixtime_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unixtime"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unixtime_array_array": {
+			"post": {
+				"operationId": "test_response_string_unixtime_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unixtime"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unixtime_nullable": {
+			"post": {
+				"operationId": "test_response_string_unixtime_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "unixtime",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unixtime_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_unixtime_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unixtime",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unixtime_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_unixtime_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unixtime",
 											"nullable": true
 										}
 									}

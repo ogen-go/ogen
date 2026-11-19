@@ -54,6 +54,8 @@ type TestQueryParameterParams struct {
 	IntegerUnixSeconds      time.Time
 	IntegerUnixSecondsArray []time.Time `json:",omitempty"`
 	IntegerUnixArray        []time.Time `json:",omitempty"`
+	IntegerUnixtime         time.Time
+	IntegerUnixtimeArray    []time.Time `json:",omitempty"`
 	Number                  float64
 	NumberArray             []float64 `json:",omitempty"`
 	NumberDecimal           decimal.Decimal
@@ -134,6 +136,8 @@ type TestQueryParameterParams struct {
 	StringUnixSeconds       time.Time
 	StringUnixSecondsArray  []time.Time `json:",omitempty"`
 	StringUnixArray         []time.Time `json:",omitempty"`
+	StringUnixtime          time.Time
+	StringUnixtimeArray     []time.Time `json:",omitempty"`
 	StringURI               url.URL
 	StringURIArray          []url.URL `json:",omitempty"`
 	StringUUID              uuid.UUID
@@ -364,6 +368,20 @@ func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQu
 			In:   "query",
 		}
 		params.IntegerUnixArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_unixtime",
+			In:   "query",
+		}
+		params.IntegerUnixtime = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "integer_unixtime_array",
+			In:   "query",
+		}
+		params.IntegerUnixtimeArray = packed[key].([]time.Time)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -924,6 +942,20 @@ func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQu
 			In:   "query",
 		}
 		params.StringUnixArray = packed[key].([]time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_unixtime",
+			In:   "query",
+		}
+		params.StringUnixtime = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_unixtime_array",
+			In:   "query",
+		}
+		params.StringUnixtimeArray = packed[key].([]time.Time)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -2394,6 +2426,96 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "integer_unix_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: integer_unixtime.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_unixtime",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToUnixSeconds(val)
+				if err != nil {
+					return err
+				}
+
+				params.IntegerUnixtime = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_unixtime",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: integer_unixtime_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_unixtime_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.IntegerUnixtimeArray = nil
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotIntegerUnixtimeArrayVal time.Time
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToUnixSeconds(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotIntegerUnixtimeArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.IntegerUnixtimeArray = append(params.IntegerUnixtimeArray, paramsDotIntegerUnixtimeArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.IntegerUnixtimeArray == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "integer_unixtime_array",
 			In:   "query",
 			Err:  err,
 		}
@@ -6217,6 +6339,96 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "string_unix_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_unixtime.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_unixtime",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToUnixSeconds(val)
+				if err != nil {
+					return err
+				}
+
+				params.StringUnixtime = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_unixtime",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_unixtime_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_unixtime_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				params.StringUnixtimeArray = nil
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotStringUnixtimeArrayVal time.Time
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToUnixSeconds(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotStringUnixtimeArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.StringUnixtimeArray = append(params.StringUnixtimeArray, paramsDotStringUnixtimeArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.StringUnixtimeArray == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_unixtime_array",
 			In:   "query",
 			Err:  err,
 		}
