@@ -1,10 +1,24 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen.Elem*/ -}}
 
-{{- define "json/dec_pointer" }}
-{{ $.Var }} = nil
+{{- define "json/dec_pointer_elem" }}
 var {{ $.NextVar }} {{ $.Type.PointerTo.Go }}
 {{- template "json/dec" pointer_elem $ }}
 {{ $.Var }} = &{{ $.NextVar }}
+{{- end -}}
+
+{{- define "json/dec_pointer" }}
+{{ $.Var }} = nil
+{{- if $.Type.NilSemantic.Null }}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+	} else {
+		{{- template "json/dec_pointer_elem" $ }}
+	}
+{{- else }}
+	{{- template "json/dec_pointer_elem" $ }}
+{{- end }}
 {{- end -}}
 
 {{- define "json/dec_array_elems" }}

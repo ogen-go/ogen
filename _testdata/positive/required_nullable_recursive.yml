@@ -1,0 +1,56 @@
+openapi: 3.1.0
+info:
+  title: Required nullable recursive properties
+  description: |
+    Regression test for https://github.com/ogen-go/ogen/issues/1791.
+
+    Properties that are required and nullable, and take part in a recursive
+    cycle, must accept an explicit JSON null while still rejecting an absent
+    property.
+  version: 1.0.0
+paths:
+  /any-of:
+    get:
+      operationId: getAnyOf
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnyOfB'
+  /type-list:
+    get:
+      operationId: getTypeList
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeListNode'
+components:
+  schemas:
+    # Nullability expressed as anyOf with a null alternative,
+    # cycle AnyOfA -> AnyOfB -> AnyOfA.
+    AnyOfA:
+      type: object
+      required: [b]
+      properties:
+        b:
+          $ref: '#/components/schemas/AnyOfB'
+    AnyOfB:
+      type: object
+      required: [a]
+      properties:
+        a:
+          anyOf:
+            - $ref: '#/components/schemas/AnyOfA'
+            - type: 'null'
+    # Nullability expressed as a type list, self-recursive.
+    TypeListNode:
+      type: [object, 'null']
+      required: [next]
+      properties:
+        next:
+          $ref: '#/components/schemas/TypeListNode'
