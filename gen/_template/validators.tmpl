@@ -26,9 +26,11 @@
 
 {{- if and ($t.IsPointer) ($t.PointerTo.NeedValidation) -}}
 	{{- $validated = true }}
+	{{- if not $t.NilSemantic.Invalid }}
 	if {{ $.Var }} == nil {
 		return nil // {{ $t.NilSemantic }}
 	}
+	{{- end }}
 	if err := func() error {
 		{{- template "validate" elem $t.PointerTo $.Var }}
 	}(); err != nil {

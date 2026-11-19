@@ -38,8 +38,8 @@ func checkStructRecursions(s *ir.Type) error {
 					}
 					return ir.Pointer(t, ir.NilNull), nil
 				default:
-					// Required.
-					return nil, errors.Errorf("infinite recursion: %s.%s is required", s.Name, field.Name)
+					// Break the Go value cycle without making the property optional or nullable.
+					return ir.Pointer(t, ir.NilInvalid), nil
 				}
 			}
 			return t, nil
