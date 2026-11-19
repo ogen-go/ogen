@@ -126,6 +126,7 @@ func (c *Client) sendGetData(ctx context.Context) (res Data, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/data"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

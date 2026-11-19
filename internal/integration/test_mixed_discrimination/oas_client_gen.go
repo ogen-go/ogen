@@ -126,6 +126,7 @@ func (c *Client) sendLogEvent(ctx context.Context, request Event) (res *LogEvent
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/events"
 	if err := encodeLogEventRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}

@@ -44,6 +44,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // GET /cached-worlds
 func (s *Server) handleCachingRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/cached-worlds"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -188,6 +189,7 @@ func (s *Server) handleCachingRequest(args [0]string, argsEscaped bool, w http.R
 //
 // GET /db
 func (s *Server) handleDBRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/db"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -314,6 +316,7 @@ func (s *Server) handleDBRequest(args [0]string, argsEscaped bool, w http.Respon
 //
 // GET /json
 func (s *Server) handleJSONRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/json"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -441,6 +444,7 @@ func (s *Server) handleJSONRequest(args [0]string, argsEscaped bool, w http.Resp
 //
 // GET /queries
 func (s *Server) handleQueriesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/queries"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -586,6 +590,7 @@ func (s *Server) handleQueriesRequest(args [0]string, argsEscaped bool, w http.R
 //
 // GET /updates
 func (s *Server) handleUpdatesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/updates"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

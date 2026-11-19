@@ -36,6 +36,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // GET /foo/bar/baz
 func (s *Server) handleFooBarBazGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/foo/bar/baz"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -157,6 +158,7 @@ func (s *Server) handleFooBarBazGetRequest(args [0]string, argsEscaped bool, w h
 //
 // GET /foo/bar/qux
 func (s *Server) handleFooBarQuxGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/foo/bar/qux"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -278,6 +280,7 @@ func (s *Server) handleFooBarQuxGetRequest(args [0]string, argsEscaped bool, w h
 //
 // GET /foo/{param}/xyz
 func (s *Server) handleFooParamXyzGetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/foo/{param}/xyz"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

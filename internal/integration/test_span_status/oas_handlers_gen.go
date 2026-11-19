@@ -37,6 +37,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // GET /span-status
 func (s *Server) handleSpanStatusBodyRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/span-status"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -159,6 +160,7 @@ func (s *Server) handleSpanStatusBodyRequest(args [0]string, argsEscaped bool, w
 //
 // PUT /span-status
 func (s *Server) handleSpanStatusNoBodyRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/span-status"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -281,6 +283,7 @@ func (s *Server) handleSpanStatusNoBodyRequest(args [0]string, argsEscaped bool,
 //
 // POST /span-status
 func (s *Server) handleSpanStatusRequestChecksRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/span-status"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

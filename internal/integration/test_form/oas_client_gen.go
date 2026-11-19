@@ -158,6 +158,7 @@ func (c *Client) sendOnlyForm(ctx context.Context, request *OnlyFormReq) (res *O
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/onlyForm"
 	if err := encodeOnlyFormRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -239,6 +240,7 @@ func (c *Client) sendOnlyMultipartFile(ctx context.Context, request *OnlyMultipa
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/onlyMultipartFile"
 	if err := encodeOnlyMultipartFileRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -320,6 +322,7 @@ func (c *Client) sendOnlyMultipartForm(ctx context.Context, request *OnlyMultipa
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/onlyMultipartForm"
 	if err := encodeOnlyMultipartFormRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -401,6 +404,7 @@ func (c *Client) sendTestFormURLEncoded(ctx context.Context, request *TestForm) 
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/testFormURLEncoded"
 	if err := encodeTestFormURLEncodedRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -482,6 +486,7 @@ func (c *Client) sendTestMultipart(ctx context.Context, request *TestFormMultipa
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/testMultipart"
 	if err := encodeTestMultipartRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -563,6 +568,7 @@ func (c *Client) sendTestMultipartUpload(ctx context.Context, request *TestMulti
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/testMultipartUpload"
 	if err := encodeTestMultipartUploadRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -644,6 +650,7 @@ func (c *Client) sendTestReuseFormOptionalSchema(ctx context.Context, request Op
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/testReuseFormOptionalSchema"
 	if err := encodeTestReuseFormOptionalSchemaRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -725,6 +732,7 @@ func (c *Client) sendTestReuseFormSchema(ctx context.Context, request *SharedReq
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/testReuseFormSchema"
 	if err := encodeTestReuseFormSchemaRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -806,6 +814,7 @@ func (c *Client) sendTestShareFormSchema(ctx context.Context, request TestShareF
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/testShareFormSchema"
 	if err := encodeTestShareFormSchemaRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}

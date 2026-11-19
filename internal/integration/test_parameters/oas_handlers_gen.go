@@ -37,6 +37,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // GET /complicatedParameterName
 func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/complicatedParameterName"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -193,6 +194,7 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEs
 //
 // GET /contentParameters/{path}
 func (s *Server) handleContentParametersRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/contentParameters/{path}"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -348,6 +350,7 @@ func (s *Server) handleContentParametersRequest(args [1]string, argsEscaped bool
 //
 // GET /cookieParameter
 func (s *Server) handleCookieParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/cookieParameter"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -491,6 +494,7 @@ func (s *Server) handleCookieParameterRequest(args [0]string, argsEscaped bool, 
 //
 // GET /headerParameter
 func (s *Server) handleHeaderParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/headerParameter"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -632,6 +636,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, argsEscaped bool, 
 //
 // GET /objectCookieParameter
 func (s *Server) handleObjectCookieParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/objectCookieParameter"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -773,6 +778,7 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, argsEscaped 
 //
 // GET /objectQueryParameter
 func (s *Server) handleObjectQueryParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/objectQueryParameter"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -918,6 +924,7 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, argsEscaped b
 //
 // GET /optionalArrayParameter
 func (s *Server) handleOptionalArrayParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/optionalArrayParameter"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1212,6 +1219,7 @@ func (s *Server) handleOptionalContentParametersRequest(args [0]string, argsEsca
 //
 // GET /optionalParameters
 func (s *Server) handleOptionalParametersRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/optionalParameters"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1375,6 +1383,7 @@ func (s *Server) handleOptionalParametersRequest(args [0]string, argsEscaped boo
 //
 // GET /pathParameter/{value}
 func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/pathParameter/{value}"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1518,6 +1527,7 @@ func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w 
 //
 // GET /same_name/{param}
 func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/same_name/{param}"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1665,6 +1675,7 @@ func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.
 //
 // GET /similarNames
 func (s *Server) handleSimilarNamesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/similarNames"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -1812,6 +1823,7 @@ func (s *Server) handleSimilarNamesRequest(args [0]string, argsEscaped bool, w h
 //
 // GET /spaceDelimitedParameter
 func (s *Server) handleSpaceDelimitedParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/spaceDelimitedParameter"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

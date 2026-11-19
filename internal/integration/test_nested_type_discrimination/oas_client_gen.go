@@ -126,6 +126,7 @@ func (c *Client) sendSendMessage(ctx context.Context, request Message) (res *Sen
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/messages"
 	if err := encodeSendMessageRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
