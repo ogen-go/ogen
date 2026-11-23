@@ -243,7 +243,7 @@ type CreateAnswerRequest struct {
 	// generated.
 	//
 	// [tokenizer tool]: /tokenizer?view=bpe
-	LogitBias OptCreateAnswerRequestLogitBias `json:"logit_bias"`
+	LogitBias OptNilCreateAnswerRequestLogitBias `json:"logit_bias"`
 	// A special boolean flag for showing metadata. If set to `true`, each document entry in the returned
 	// JSON will contain a "metadata" field.
 	//
@@ -328,7 +328,7 @@ func (s *CreateAnswerRequest) GetN() OptNilInt {
 }
 
 // GetLogitBias returns the value of LogitBias.
-func (s *CreateAnswerRequest) GetLogitBias() OptCreateAnswerRequestLogitBias {
+func (s *CreateAnswerRequest) GetLogitBias() OptNilCreateAnswerRequestLogitBias {
 	return s.LogitBias
 }
 
@@ -418,7 +418,7 @@ func (s *CreateAnswerRequest) SetN(val OptNilInt) {
 }
 
 // SetLogitBias sets the value of LogitBias.
-func (s *CreateAnswerRequest) SetLogitBias(val OptCreateAnswerRequestLogitBias) {
+func (s *CreateAnswerRequest) SetLogitBias(val OptNilCreateAnswerRequestLogitBias) {
 	s.LogitBias = val
 }
 
@@ -674,7 +674,7 @@ type CreateChatCompletionRequest struct {
 	// the model prior to sampling. The exact effect will vary per model, but values between -1 and 1
 	// should decrease or increase likelihood of selection; values like -100 or 100 should result in a ban
 	// or exclusive selection of the relevant token.
-	LogitBias OptCreateChatCompletionRequestLogitBias `json:"logit_bias"`
+	LogitBias OptNilCreateChatCompletionRequestLogitBias `json:"logit_bias"`
 	// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
 	// [Learn more].
 	//
@@ -733,7 +733,7 @@ func (s *CreateChatCompletionRequest) GetFrequencyPenalty() OptNilFloat64 {
 }
 
 // GetLogitBias returns the value of LogitBias.
-func (s *CreateChatCompletionRequest) GetLogitBias() OptCreateChatCompletionRequestLogitBias {
+func (s *CreateChatCompletionRequest) GetLogitBias() OptNilCreateChatCompletionRequestLogitBias {
 	return s.LogitBias
 }
 
@@ -793,7 +793,7 @@ func (s *CreateChatCompletionRequest) SetFrequencyPenalty(val OptNilFloat64) {
 }
 
 // SetLogitBias sets the value of LogitBias.
-func (s *CreateChatCompletionRequest) SetLogitBias(val OptCreateChatCompletionRequestLogitBias) {
+func (s *CreateChatCompletionRequest) SetLogitBias(val OptNilCreateChatCompletionRequestLogitBias) {
 	s.LogitBias = val
 }
 
@@ -1088,7 +1088,7 @@ type CreateClassificationRequest struct {
 	// generated.
 	//
 	// [tokenizer tool]: /tokenizer?view=bpe
-	LogitBias OptCreateClassificationRequestLogitBias `json:"logit_bias"`
+	LogitBias OptNilCreateClassificationRequestLogitBias `json:"logit_bias"`
 	// If set to `true`, the returned JSON will include a "prompt" field containing the final prompt that
 	// was used to request a completion. This is mainly useful for debugging purposes.
 	ReturnPrompt OptNilBool `json:"return_prompt"`
@@ -1153,7 +1153,7 @@ func (s *CreateClassificationRequest) GetMaxExamples() OptNilInt {
 }
 
 // GetLogitBias returns the value of LogitBias.
-func (s *CreateClassificationRequest) GetLogitBias() OptCreateClassificationRequestLogitBias {
+func (s *CreateClassificationRequest) GetLogitBias() OptNilCreateClassificationRequestLogitBias {
 	return s.LogitBias
 }
 
@@ -1223,7 +1223,7 @@ func (s *CreateClassificationRequest) SetMaxExamples(val OptNilInt) {
 }
 
 // SetLogitBias sets the value of LogitBias.
-func (s *CreateClassificationRequest) SetLogitBias(val OptCreateClassificationRequestLogitBias) {
+func (s *CreateClassificationRequest) SetLogitBias(val OptNilCreateClassificationRequestLogitBias) {
 	s.LogitBias = val
 }
 
@@ -1464,7 +1464,7 @@ type CreateCompletionRequest struct {
 	// generated.
 	//
 	// [tokenizer tool]: /tokenizer?view=bpe
-	LogitBias OptCreateCompletionRequestLogitBias `json:"logit_bias"`
+	LogitBias OptNilCreateCompletionRequestLogitBias `json:"logit_bias"`
 	// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
 	// [Learn more].
 	//
@@ -1543,7 +1543,7 @@ func (s *CreateCompletionRequest) GetBestOf() OptNilInt {
 }
 
 // GetLogitBias returns the value of LogitBias.
-func (s *CreateCompletionRequest) GetLogitBias() OptCreateCompletionRequestLogitBias {
+func (s *CreateCompletionRequest) GetLogitBias() OptNilCreateCompletionRequestLogitBias {
 	return s.LogitBias
 }
 
@@ -1623,7 +1623,7 @@ func (s *CreateCompletionRequest) SetBestOf(val OptNilInt) {
 }
 
 // SetLogitBias sets the value of LogitBias.
-func (s *CreateCompletionRequest) SetLogitBias(val OptCreateCompletionRequestLogitBias) {
+func (s *CreateCompletionRequest) SetLogitBias(val OptNilCreateCompletionRequestLogitBias) {
 	s.LogitBias = val
 }
 
@@ -4259,98 +4259,6 @@ func (o OptChatCompletionResponseMessage) Or(d ChatCompletionResponseMessage) Ch
 	return d
 }
 
-// NewOptCreateAnswerRequestLogitBias returns new OptCreateAnswerRequestLogitBias with value set to v.
-func NewOptCreateAnswerRequestLogitBias(v *CreateAnswerRequestLogitBias) OptCreateAnswerRequestLogitBias {
-	return OptCreateAnswerRequestLogitBias{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptCreateAnswerRequestLogitBias is optional *CreateAnswerRequestLogitBias.
-type OptCreateAnswerRequestLogitBias struct {
-	Value *CreateAnswerRequestLogitBias
-	Set   bool
-}
-
-// IsSet returns true if OptCreateAnswerRequestLogitBias was set.
-func (o OptCreateAnswerRequestLogitBias) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptCreateAnswerRequestLogitBias) Reset() {
-	var v *CreateAnswerRequestLogitBias
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptCreateAnswerRequestLogitBias) SetTo(v *CreateAnswerRequestLogitBias) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptCreateAnswerRequestLogitBias) Get() (v *CreateAnswerRequestLogitBias, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptCreateAnswerRequestLogitBias) Or(d *CreateAnswerRequestLogitBias) *CreateAnswerRequestLogitBias {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptCreateChatCompletionRequestLogitBias returns new OptCreateChatCompletionRequestLogitBias with value set to v.
-func NewOptCreateChatCompletionRequestLogitBias(v *CreateChatCompletionRequestLogitBias) OptCreateChatCompletionRequestLogitBias {
-	return OptCreateChatCompletionRequestLogitBias{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptCreateChatCompletionRequestLogitBias is optional *CreateChatCompletionRequestLogitBias.
-type OptCreateChatCompletionRequestLogitBias struct {
-	Value *CreateChatCompletionRequestLogitBias
-	Set   bool
-}
-
-// IsSet returns true if OptCreateChatCompletionRequestLogitBias was set.
-func (o OptCreateChatCompletionRequestLogitBias) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptCreateChatCompletionRequestLogitBias) Reset() {
-	var v *CreateChatCompletionRequestLogitBias
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptCreateChatCompletionRequestLogitBias) SetTo(v *CreateChatCompletionRequestLogitBias) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptCreateChatCompletionRequestLogitBias) Get() (v *CreateChatCompletionRequestLogitBias, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptCreateChatCompletionRequestLogitBias) Or(d *CreateChatCompletionRequestLogitBias) *CreateChatCompletionRequestLogitBias {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptCreateChatCompletionResponseUsage returns new OptCreateChatCompletionResponseUsage with value set to v.
 func NewOptCreateChatCompletionResponseUsage(v CreateChatCompletionResponseUsage) OptCreateChatCompletionResponseUsage {
 	return OptCreateChatCompletionResponseUsage{
@@ -4391,98 +4299,6 @@ func (o OptCreateChatCompletionResponseUsage) Get() (v CreateChatCompletionRespo
 
 // Or returns value if set, or given parameter if does not.
 func (o OptCreateChatCompletionResponseUsage) Or(d CreateChatCompletionResponseUsage) CreateChatCompletionResponseUsage {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptCreateClassificationRequestLogitBias returns new OptCreateClassificationRequestLogitBias with value set to v.
-func NewOptCreateClassificationRequestLogitBias(v *CreateClassificationRequestLogitBias) OptCreateClassificationRequestLogitBias {
-	return OptCreateClassificationRequestLogitBias{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptCreateClassificationRequestLogitBias is optional *CreateClassificationRequestLogitBias.
-type OptCreateClassificationRequestLogitBias struct {
-	Value *CreateClassificationRequestLogitBias
-	Set   bool
-}
-
-// IsSet returns true if OptCreateClassificationRequestLogitBias was set.
-func (o OptCreateClassificationRequestLogitBias) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptCreateClassificationRequestLogitBias) Reset() {
-	var v *CreateClassificationRequestLogitBias
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptCreateClassificationRequestLogitBias) SetTo(v *CreateClassificationRequestLogitBias) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptCreateClassificationRequestLogitBias) Get() (v *CreateClassificationRequestLogitBias, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptCreateClassificationRequestLogitBias) Or(d *CreateClassificationRequestLogitBias) *CreateClassificationRequestLogitBias {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptCreateCompletionRequestLogitBias returns new OptCreateCompletionRequestLogitBias with value set to v.
-func NewOptCreateCompletionRequestLogitBias(v *CreateCompletionRequestLogitBias) OptCreateCompletionRequestLogitBias {
-	return OptCreateCompletionRequestLogitBias{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptCreateCompletionRequestLogitBias is optional *CreateCompletionRequestLogitBias.
-type OptCreateCompletionRequestLogitBias struct {
-	Value *CreateCompletionRequestLogitBias
-	Set   bool
-}
-
-// IsSet returns true if OptCreateCompletionRequestLogitBias was set.
-func (o OptCreateCompletionRequestLogitBias) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptCreateCompletionRequestLogitBias) Reset() {
-	var v *CreateCompletionRequestLogitBias
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptCreateCompletionRequestLogitBias) SetTo(v *CreateCompletionRequestLogitBias) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptCreateCompletionRequestLogitBias) Get() (v *CreateCompletionRequestLogitBias, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptCreateCompletionRequestLogitBias) Or(d *CreateCompletionRequestLogitBias) *CreateCompletionRequestLogitBias {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -4809,6 +4625,74 @@ func (o OptNilBool) Or(d bool) bool {
 	return d
 }
 
+// NewOptNilCreateAnswerRequestLogitBias returns new OptNilCreateAnswerRequestLogitBias with value set to v.
+func NewOptNilCreateAnswerRequestLogitBias(v CreateAnswerRequestLogitBias) OptNilCreateAnswerRequestLogitBias {
+	return OptNilCreateAnswerRequestLogitBias{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilCreateAnswerRequestLogitBias is optional nullable CreateAnswerRequestLogitBias.
+type OptNilCreateAnswerRequestLogitBias struct {
+	Value CreateAnswerRequestLogitBias
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilCreateAnswerRequestLogitBias was set.
+func (o OptNilCreateAnswerRequestLogitBias) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilCreateAnswerRequestLogitBias) Reset() {
+	var v CreateAnswerRequestLogitBias
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilCreateAnswerRequestLogitBias) SetTo(v CreateAnswerRequestLogitBias) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsNull returns true if value is Null.
+func (o OptNilCreateAnswerRequestLogitBias) IsNull() bool { return o.Null }
+
+// SetToNull sets value to null.
+func (o *OptNilCreateAnswerRequestLogitBias) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v CreateAnswerRequestLogitBias
+	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateAnswerRequestLogitBias) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilCreateAnswerRequestLogitBias) Get() (v CreateAnswerRequestLogitBias, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilCreateAnswerRequestLogitBias) Or(d CreateAnswerRequestLogitBias) CreateAnswerRequestLogitBias {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilCreateAnswerRequestStop returns new OptNilCreateAnswerRequestStop with value set to v.
 func NewOptNilCreateAnswerRequestStop(v CreateAnswerRequestStop) OptNilCreateAnswerRequestStop {
 	return OptNilCreateAnswerRequestStop{
@@ -4877,6 +4761,74 @@ func (o OptNilCreateAnswerRequestStop) Or(d CreateAnswerRequestStop) CreateAnswe
 	return d
 }
 
+// NewOptNilCreateChatCompletionRequestLogitBias returns new OptNilCreateChatCompletionRequestLogitBias with value set to v.
+func NewOptNilCreateChatCompletionRequestLogitBias(v CreateChatCompletionRequestLogitBias) OptNilCreateChatCompletionRequestLogitBias {
+	return OptNilCreateChatCompletionRequestLogitBias{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilCreateChatCompletionRequestLogitBias is optional nullable CreateChatCompletionRequestLogitBias.
+type OptNilCreateChatCompletionRequestLogitBias struct {
+	Value CreateChatCompletionRequestLogitBias
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilCreateChatCompletionRequestLogitBias was set.
+func (o OptNilCreateChatCompletionRequestLogitBias) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilCreateChatCompletionRequestLogitBias) Reset() {
+	var v CreateChatCompletionRequestLogitBias
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilCreateChatCompletionRequestLogitBias) SetTo(v CreateChatCompletionRequestLogitBias) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsNull returns true if value is Null.
+func (o OptNilCreateChatCompletionRequestLogitBias) IsNull() bool { return o.Null }
+
+// SetToNull sets value to null.
+func (o *OptNilCreateChatCompletionRequestLogitBias) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v CreateChatCompletionRequestLogitBias
+	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateChatCompletionRequestLogitBias) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilCreateChatCompletionRequestLogitBias) Get() (v CreateChatCompletionRequestLogitBias, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilCreateChatCompletionRequestLogitBias) Or(d CreateChatCompletionRequestLogitBias) CreateChatCompletionRequestLogitBias {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilCreateChatCompletionRequestStop returns new OptNilCreateChatCompletionRequestStop with value set to v.
 func NewOptNilCreateChatCompletionRequestStop(v CreateChatCompletionRequestStop) OptNilCreateChatCompletionRequestStop {
 	return OptNilCreateChatCompletionRequestStop{
@@ -4939,6 +4891,142 @@ func (o OptNilCreateChatCompletionRequestStop) Get() (v CreateChatCompletionRequ
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNilCreateChatCompletionRequestStop) Or(d CreateChatCompletionRequestStop) CreateChatCompletionRequestStop {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilCreateClassificationRequestLogitBias returns new OptNilCreateClassificationRequestLogitBias with value set to v.
+func NewOptNilCreateClassificationRequestLogitBias(v CreateClassificationRequestLogitBias) OptNilCreateClassificationRequestLogitBias {
+	return OptNilCreateClassificationRequestLogitBias{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilCreateClassificationRequestLogitBias is optional nullable CreateClassificationRequestLogitBias.
+type OptNilCreateClassificationRequestLogitBias struct {
+	Value CreateClassificationRequestLogitBias
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilCreateClassificationRequestLogitBias was set.
+func (o OptNilCreateClassificationRequestLogitBias) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilCreateClassificationRequestLogitBias) Reset() {
+	var v CreateClassificationRequestLogitBias
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilCreateClassificationRequestLogitBias) SetTo(v CreateClassificationRequestLogitBias) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsNull returns true if value is Null.
+func (o OptNilCreateClassificationRequestLogitBias) IsNull() bool { return o.Null }
+
+// SetToNull sets value to null.
+func (o *OptNilCreateClassificationRequestLogitBias) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v CreateClassificationRequestLogitBias
+	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateClassificationRequestLogitBias) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilCreateClassificationRequestLogitBias) Get() (v CreateClassificationRequestLogitBias, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilCreateClassificationRequestLogitBias) Or(d CreateClassificationRequestLogitBias) CreateClassificationRequestLogitBias {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilCreateCompletionRequestLogitBias returns new OptNilCreateCompletionRequestLogitBias with value set to v.
+func NewOptNilCreateCompletionRequestLogitBias(v CreateCompletionRequestLogitBias) OptNilCreateCompletionRequestLogitBias {
+	return OptNilCreateCompletionRequestLogitBias{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilCreateCompletionRequestLogitBias is optional nullable CreateCompletionRequestLogitBias.
+type OptNilCreateCompletionRequestLogitBias struct {
+	Value CreateCompletionRequestLogitBias
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilCreateCompletionRequestLogitBias was set.
+func (o OptNilCreateCompletionRequestLogitBias) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilCreateCompletionRequestLogitBias) Reset() {
+	var v CreateCompletionRequestLogitBias
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilCreateCompletionRequestLogitBias) SetTo(v CreateCompletionRequestLogitBias) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsNull returns true if value is Null.
+func (o OptNilCreateCompletionRequestLogitBias) IsNull() bool { return o.Null }
+
+// SetToNull sets value to null.
+func (o *OptNilCreateCompletionRequestLogitBias) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v CreateCompletionRequestLogitBias
+	o.Value = v
+}
+
+// IsEmpty returns true if the field was omitted from the payload (not Set and not Null).
+func (o OptNilCreateCompletionRequestLogitBias) IsEmpty() bool {
+	return !o.Set && !o.Null
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilCreateCompletionRequestLogitBias) Get() (v CreateCompletionRequestLogitBias, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilCreateCompletionRequestLogitBias) Or(d CreateCompletionRequestLogitBias) CreateCompletionRequestLogitBias {
 	if v, ok := o.Get(); ok {
 		return v
 	}

@@ -188,7 +188,7 @@ func TestJSONGenerics(t *testing.T) {
 		val := api.Issue1310{
 			Title:      api.NewOptString("Bad Request"),
 			Details:    api.NewOptString("This is an example error"),
-			Properties: api.NewOptIssue1310Properties(&api.Issue1310Properties{}),
+			Properties: api.NewOptNilIssue1310Properties(api.Issue1310Properties{}),
 		}
 		encoded := encodeObject(&val)
 
