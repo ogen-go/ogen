@@ -2,7 +2,9 @@ package gen
 
 import (
 	"fmt"
+	"go/version"
 	"slices"
+	"strings"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/yaml"
@@ -62,6 +64,49 @@ func (s *FeatureSet) Enable(name string) error {
 	}
 	(*s)[name] = struct{}{}
 	return nil
+}
+
+// minGoVersion maps features to the minimal Go version they require. Such
+// features are enabled automatically if the target Go version is new enough,
+// unless they are explicitly disabled.
+var minGoVersion = map[Feature]string{
+	FormatStdlibUUID: "go1.27",
+}
+
+// enableForGoVersion enables features available for the target Go version,
+// like "1.27" or "go1.27.1". Empty version enables nothing.
+func (s *FeatureSet) enableForGoVersion(cfg *FeatureOptions, goVersion string) error {
+	if goVersion == "" {
+		return nil
+	}
+	v := goVersion
+	if !strings.HasPrefix(v, "go") {
+		v = "go" + v
+	}
+	if !version.IsValid(v) {
+		return errors.Errorf("invalid Go version %q", goVersion)
+	}
+	for f, minVersion := range minGoVersion {
+		if version.Compare(v, minVersion) < 0 || cfg.disabled(f) {
+			continue
+		}
+		if err := s.Enable(f.Name); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// disabled reports whether feature is explicitly disabled.
+func (cfg *FeatureOptions) disabled(f Feature) bool {
+	if cfg == nil {
+		return false
+	}
+	if cfg.DisableAll {
+		return true
+	}
+	_, ok := cfg.Disable[f.Name]
+	return ok
 }
 
 // Disable removes a feature from set.
@@ -156,6 +201,12 @@ var (
 			`(type Foo struct{ Bar }) instead of defined types (type Foo Bar), ` +
 			`so methods of the original type are promoted. Opt-in, since it changes generated API.`,
 	}
+	FormatStdlibUUID = Feature{
+		"format/stdlib_uuid",
+		`Uses the standard library uuid.UUID (Go 1.27+) for "format: uuid" instead of ` +
+			`github.com/google/uuid. Enabled automatically if the target Go version is 1.27 or newer, ` +
+			`disable it to keep github.com/google/uuid.`,
+	}
 	NamingCamelInitialisms = Feature{
 		"naming/camel_initialisms",
 		`Applies initialism rules (ID, URL, HTTP, ...) to camelCase identifiers, ` +
@@ -190,5 +241,6 @@ var AllFeatures = []Feature{
 	OgenUnimplemented,
 	DebugExampleTests,
 	SchemaEmbedStructAliases,
+	FormatStdlibUUID,
 	NamingCamelInitialisms,
 }

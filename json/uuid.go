@@ -63,3 +63,20 @@ func hexEncode(dst *[36]byte, v uuid.UUID) {
 		dst[24+10], dst[24+11] = hextable[v[10+5]>>4], hextable[v[10+5]&0x0f]
 	}
 }
+
+// DecodeUUIDOf decodes UUID of type T from json.
+//
+// It is used for UUID types other than github.com/google/uuid.UUID, like the
+// standard library uuid.UUID.
+func DecodeUUIDOf[T ~[16]byte](d *jx.Decoder) (T, error) {
+	v, err := DecodeUUID(d)
+	return T(v), err
+}
+
+// EncodeUUIDOf encodes UUID of type T to json.
+//
+// It is used for UUID types other than github.com/google/uuid.UUID, like the
+// standard library uuid.UUID.
+func EncodeUUIDOf[T ~[16]byte](e *jx.Encoder, v T) {
+	EncodeUUID(e, uuid.UUID(v))
+}

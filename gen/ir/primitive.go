@@ -4,6 +4,9 @@ package ir
 type PrimitiveType string
 
 func (p PrimitiveType) String() string {
+	if p == StdUUID {
+		return "uuid.UUID"
+	}
 	return string(p)
 }
 
@@ -40,4 +43,10 @@ const (
 	File      PrimitiveType = "ht.MultipartFile"
 	Decimal   PrimitiveType = "decimal.Decimal"
 	Custom    PrimitiveType = "<custom>"
+
+	// StdUUID is the standard library uuid.UUID, added in Go 1.27.
+	//
+	// It differs from UUID only by the import path, so its value is not a Go
+	// type, see [PrimitiveType.String].
+	StdUUID PrimitiveType = "<stduuid>"
 )

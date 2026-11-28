@@ -162,6 +162,9 @@ func (g *schemaGen) parseSimple(schema *jsonschema.Schema) *ir.Type {
 		// Fallback to default.
 		t = mapping[schema.Type][""]
 	}
+	if t == ir.UUID && g.stdUUID {
+		t = ir.StdUUID
+	}
 
 	return ir.Primitive(t, schema)
 }

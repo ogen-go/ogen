@@ -10,7 +10,7 @@ FROM golang:${GO_VERSION} AS builder
 WORKDIR /go/src/app
 COPY . .
 RUN go mod download
-RUN CGO_ENABLED=0 go build -o /go/bin/ogen ./cmd/ogen/main.go
+RUN CGO_ENABLED=0 go build -o /go/bin/ogen ./cmd/ogen
 RUN CGO_ENABLED=0 go build -o /go/bin/jschemagen ./cmd/jschemagen/main.go
 
 FROM ${BASE_IMAGE}

@@ -168,6 +168,10 @@ func (j JSON) Format() string {
 	}
 	switch f := s.Format; f {
 	case "uuid":
+		if j.t.Primitive == StdUUID {
+			// Generic helpers, see json.EncodeUUIDOf and json.DecodeUUIDOf.
+			return "UUIDOf"
+		}
 		return "UUID"
 	case "date":
 		return "Date"
@@ -277,7 +281,7 @@ func jsonType(t *Type) string {
 			return "Number"
 		}
 		return "String"
-	case String, Duration, UUID, MAC, IP, URL, ByteSlice:
+	case String, Duration, UUID, StdUUID, MAC, IP, URL, ByteSlice:
 		return "String"
 	case Null:
 		return "Null"
@@ -384,6 +388,10 @@ func (j JSON) Decoder() string {
 			prefix = "String"
 		}
 		return prefix + external.String() + "[" + j.t.Primitive.String() + "]"
+	}
+	if f := j.Format(); f == "UUIDOf" {
+		// Type argument of a generic decoder can't be inferred.
+		return f + "[" + StdUUID.String() + "]"
 	}
 	return j.Format()
 }

@@ -207,6 +207,14 @@ type GenerateOptions struct {
 	// SpecSource selects the OpenAPI document embedded by the "server/spec" feature.
 	// See [SpecSource].
 	SpecSource SpecSource `json:"spec_source" yaml:"spec_source"`
+
+	// GoVersion is the Go language version of the module the code is generated
+	// for, like "1.27". The ogen CLI detects it from the go.mod of the target
+	// directory, if it is not set.
+	//
+	// It enables features that require a newer Go version, like
+	// "format/stdlib_uuid". Empty value means the oldest supported version.
+	GoVersion string `json:"go_version" yaml:"go_version"`
 }
 
 // SpecSource selects the OpenAPI document embedded by the "server/spec" feature.

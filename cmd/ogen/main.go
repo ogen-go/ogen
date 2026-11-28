@@ -451,6 +451,15 @@ func run() error {
 		opts.Generator.Initialisms = list
 	}
 
+	if opts.Generator.GoVersion == "" {
+		v, err := detectGoVersion(*targetDir)
+		if err != nil {
+			return errors.Wrap(err, "detect target Go version")
+		}
+		logger.Debug("Detected target Go version", zap.String("version", v))
+		opts.Generator.GoVersion = v
+	}
+
 	data, err := opts.SetLocation(specPath, gen.RemoteOptions{})
 	if err != nil {
 		return errors.Wrap(err, "resolve spec")

@@ -43,6 +43,7 @@ type Generator struct {
 	features    FeatureSet      // resolved feature set, built once in NewGenerator
 	initialisms bool            // NamingCamelInitialisms feature: apply initialism rules to camelCase identifiers
 	rules       *naming.Ruleset // custom initialism ruleset, nil means package default
+	stdUUID     bool            // FormatStdlibUUID feature: use the standard library uuid.UUID
 
 	log *zap.Logger
 }
@@ -142,7 +143,16 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "build features")
 	}
+	if err := g.features.enableForGoVersion(g.opt.Features, g.opt.GoVersion); err != nil {
+		return nil, errors.Wrap(err, "go version")
+	}
 	g.initialisms = g.features.Has(NamingCamelInitialisms)
+	g.stdUUID = g.features.Has(FormatStdlibUUID)
+	if g.stdUUID {
+		// Both packages are named uuid, so only one of them can be imported.
+		delete(g.imports, "github.com/google/uuid")
+		g.imports["uuid"] = ""
+	}
 
 	g.rules, err = g.opt.Initialisms.build()
 	if err != nil {

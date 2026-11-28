@@ -62,6 +62,7 @@ func (g *Generator) generateSchema(
 	gen := newSchemaGen(lookup)
 	gen.initialisms = g.initialisms
 	gen.rules = g.rules
+	gen.stdUUID = g.stdUUID
 	if o := override; o != nil {
 		if n := o.nameRef; n != nil {
 			prev := gen.nameRef

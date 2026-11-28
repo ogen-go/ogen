@@ -118,6 +118,7 @@ properties:
                 - "ogen/unimplemented"
                 - "debug/example_tests"
                 - "schema/embed_struct_aliases"
+                - "format/stdlib_uuid"
                 - "naming/camel_initialisms"
               enumDescriptions:
                 - "Generate client code for API paths."
@@ -135,6 +136,7 @@ properties:
                 - "Generate stub handlers for unimplemented operations."
                 - "Generate debug example tests."
                 - "Generate aliases of object schemas as structs embedding the original type, so its methods are promoted."
+                - "Use the standard library uuid.UUID (Go 1.27+) for format: uuid. Enabled automatically if the target Go version is 1.27 or newer."
                 - "Apply initialism rules (ID, URL, HTTP, ...) to camelCase identifiers, e.g. userId -> UserID."
             default:
               - "paths/client"
@@ -167,6 +169,7 @@ properties:
                 - "ogen/unimplemented"
                 - "debug/example_tests"
                 - "schema/embed_struct_aliases"
+                - "format/stdlib_uuid"
                 - "naming/camel_initialisms"
               enumDescriptions:
                 - "Disable client code generation for API paths."
@@ -184,6 +187,7 @@ properties:
                 - "Disable stub handlers for unimplemented operations."
                 - "Disable debug example tests."
                 - "Disable generating aliases of object schemas as embedding structs."
+                - "Keep github.com/google/uuid for format: uuid even if the target Go version is 1.27 or newer."
                 - "Disable applying initialism rules to camelCase identifiers."
             default: []
           disable_all:
@@ -268,6 +272,12 @@ properties:
           all initialisms.
         items:
           type: string
+      go_version:
+        type: string
+        description: >
+          Go language version of the module the code is generated for, like "1.27".
+          Detected from the go.mod of the target directory by default.
+          Enables features that require a newer Go version, like "format/stdlib_uuid".
       spec_source:
         type: string
         description: >
