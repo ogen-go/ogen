@@ -171,7 +171,8 @@ func encodeDataOnlyResponse(ctx context.Context, response *DataOnlyOK, w http.Re
 	enc := sse.NewEncoder(w)
 	// Flush the headers, so that the client does not wait for the first event.
 	if err := enc.Flush(); err != nil {
-		return errors.Wrap(err, "flush")
+		// Headers are already written, so the error can't be reported to the client.
+		return errors.Join(errors.Wrap(err, "flush"), ht.ErrResponseSent)
 	}
 	if response.Events != nil {
 		sender := sse.NewSender(enc, encodeDataOnlyOKEvent)
@@ -214,7 +215,8 @@ func encodeDataOnlyStringResponse(ctx context.Context, response *DataOnlyStringO
 	enc := sse.NewEncoder(w)
 	// Flush the headers, so that the client does not wait for the first event.
 	if err := enc.Flush(); err != nil {
-		return errors.Wrap(err, "flush")
+		// Headers are already written, so the error can't be reported to the client.
+		return errors.Join(errors.Wrap(err, "flush"), ht.ErrResponseSent)
 	}
 	if response.Events != nil {
 		sender := sse.NewSender(enc, encodeDataOnlyStringOKEvent)
@@ -257,7 +259,8 @@ func encodeDataOnlyTimeResponse(ctx context.Context, response *DataOnlyTimeOK, w
 	enc := sse.NewEncoder(w)
 	// Flush the headers, so that the client does not wait for the first event.
 	if err := enc.Flush(); err != nil {
-		return errors.Wrap(err, "flush")
+		// Headers are already written, so the error can't be reported to the client.
+		return errors.Join(errors.Wrap(err, "flush"), ht.ErrResponseSent)
 	}
 	if response.Events != nil {
 		sender := sse.NewSender(enc, encodeDataOnlyTimeOKEvent)
@@ -300,7 +303,8 @@ func encodeFullEventsResponse(ctx context.Context, response *FullEventsOK, w htt
 	enc := sse.NewEncoder(w)
 	// Flush the headers, so that the client does not wait for the first event.
 	if err := enc.Flush(); err != nil {
-		return errors.Wrap(err, "flush")
+		// Headers are already written, so the error can't be reported to the client.
+		return errors.Join(errors.Wrap(err, "flush"), ht.ErrResponseSent)
 	}
 	if response.Events != nil {
 		sender := sse.NewSender(enc, encodeFullEventsOKEvent)
@@ -345,7 +349,8 @@ func encodeOptionalStreamResponse(ctx context.Context, response OptionalStreamRe
 		enc := sse.NewEncoder(w)
 		// Flush the headers, so that the client does not wait for the first event.
 		if err := enc.Flush(); err != nil {
-			return errors.Wrap(err, "flush")
+			// Headers are already written, so the error can't be reported to the client.
+			return errors.Join(errors.Wrap(err, "flush"), ht.ErrResponseSent)
 		}
 		if response.Events != nil {
 			sender := sse.NewSender(enc, encodeOptionalStreamOKEvent)
@@ -421,7 +426,8 @@ func encodeWithHeadersResponse(ctx context.Context, response *WithHeadersOKHeade
 	enc := sse.NewEncoder(w)
 	// Flush the headers, so that the client does not wait for the first event.
 	if err := enc.Flush(); err != nil {
-		return errors.Wrap(err, "flush")
+		// Headers are already written, so the error can't be reported to the client.
+		return errors.Join(errors.Wrap(err, "flush"), ht.ErrResponseSent)
 	}
 	if response.Response.Events != nil {
 		sender := sse.NewSender(enc, encodeWithHeadersOKEvent)

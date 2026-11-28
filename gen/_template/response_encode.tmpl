@@ -283,7 +283,8 @@ w.Header().Set("Access-Control-Expose-Headers", {{ $exposeHeaders }})
 		enc := sse.NewEncoder(w)
 		// Flush the headers, so that the client does not wait for the first event.
 		if err := enc.Flush(); err != nil {
-			return errors.Wrap(err, "flush")
+			// Headers are already written, so the error can't be reported to the client.
+			return errors.Join(errors.Wrap(err, "flush"), ht.ErrResponseSent)
 		}
 		if {{ $var }}.Events != nil {
 			sender := sse.NewSender(enc, encode{{ $sse.Name }}Event)
