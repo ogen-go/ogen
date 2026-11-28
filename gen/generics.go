@@ -7,15 +7,29 @@ import (
 	"github.com/ogen-go/ogen/internal/naming"
 )
 
-func checkStructRecursions(s *ir.Type) error {
+// checkStructRecursions breaks recursive cycles by boxing recursive
+// optional or nullable fields of s into pointers.
+//
+// It must be called in two passes over all struct types: first with
+// final=false, which only boxes optional and nullable fields, then with
+// final=true, which reports required fields that are still recursive.
+// Otherwise a required field may be reported as infinitely recursive before
+// the nullable field that breaks the same cycle has been boxed.
+func checkStructRecursions(s *ir.Type, final bool) error {
 	for _, field := range s.Fields {
 		if field.Spec == nil {
 			continue
 		}
 
+		// Apply the same transformations as type generation, so that
+		// nullable unions like anyOf: [X, {type: 'null'}] are seen as nullable.
+		schema := transformSchema(field.Spec.Schema)
 		v := ir.GenericVariant{
-			Nullable: field.Spec.Schema.Nullable,
+			Nullable: schema != nil && schema.Nullable,
 			Optional: !field.Spec.Required,
+		}
+		if !final && !v.Any() {
+			continue
 		}
 
 		boxedT, err := func(t *ir.Type) (*ir.Type, error) {
@@ -38,8 +52,8 @@ func checkStructRecursions(s *ir.Type) error {
 					}
 					return ir.Pointer(t, ir.NilNull), nil
 				default:
-					// Required.
-					return nil, errors.Errorf("infinite recursion: %s.%s is required", s.Name, field.Name)
+					// Break the Go value cycle without making the property optional or nullable.
+					return ir.Pointer(t, ir.NilInvalid), nil
 				}
 			}
 			return t, nil

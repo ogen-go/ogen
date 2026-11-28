@@ -4,7 +4,7 @@ go 1.26.0
 
 require (
 	github.com/davecgh/go-spew v1.1.1
-	github.com/dlclark/regexp2 v1.12.0
+	github.com/dlclark/regexp2/v2 v2.13.2
 	github.com/fatih/color v1.19.0
 	github.com/ghodss/yaml v1.0.0
 	github.com/go-faster/errors v0.8.0
