@@ -5,6 +5,17 @@ This project follows [Conventional Commits](https://www.conventionalcommits.org/
 Before creating pull requests, please read the [coding guidelines](https://github.com/uber-go/guide/blob/master/style.md) and
 follow some existing [pull requests](https://github.com/ogen-go/ogen/pulls).
 
+## Response times
+
+Maintainers aim for a **median time of 7 days** to resolve:
+
+- pull requests: merged, closed, or sent back with review comments;
+- critical issues: regressions, generated code that does not compile, crashes and
+  data corruption at runtime, and security issues (see [SECURITY.md](SECURITY.md)).
+
+This is a target, not a guarantee. If your pull request or critical issue has had no
+response for longer than that, feel free to ping the maintainers in the thread.
+
 ## Optimizations
 
 Please provide [benchstat](https://pkg.go.dev/golang.org/x/perf/cmd/benchstat) output if your PR
