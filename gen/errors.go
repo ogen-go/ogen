@@ -116,28 +116,43 @@ func (g *Generator) fail(err error) error {
 	if err == nil {
 		return nil
 	}
-	hasAll := slices.Contains(g.opt.IgnoreNotImplemented, "all")
-	handle := func(name string, err error) error {
-		if hook := g.opt.NotImplementedHook; hook != nil {
-			hook(name, err)
-		}
-		if hasAll || slices.Contains(g.opt.IgnoreNotImplemented, name) {
-			return nil
-		}
+	name, ok := skipErrorName(err)
+	if !ok {
 		return err
 	}
-	if notImplementedErr, ok := errors.Into[*ErrNotImplemented](err); ok {
-		return handle(notImplementedErr.Name, err)
+	if hook := g.opt.NotImplementedHook; hook != nil {
+		hook(name, err)
 	}
-	if _, ok := errors.Into[*ErrUnsupportedContentTypes](err); ok {
-		const name = "unsupported content types"
-		return handle(name, err)
-	}
-	if _, ok := errors.Into[*ErrFieldsDiscriminatorInference](err); ok {
-		const name = "discriminator inference"
-		return handle(name, err)
+	if g.ignoresErrorName(name) {
+		return nil
 	}
 	return err
+}
+
+// canSkip reports whether err is explicitly allowed by IgnoreNotImplemented.
+// Unlike fail, it does not invoke NotImplementedHook, so callers can inspect an
+// error before deciding at which level it should be reported and skipped.
+func (g *Generator) canSkip(err error) bool {
+	name, ok := skipErrorName(err)
+	return ok && g.ignoresErrorName(name)
+}
+
+func (g *Generator) ignoresErrorName(name string) bool {
+	return slices.Contains(g.opt.IgnoreNotImplemented, "all") ||
+		slices.Contains(g.opt.IgnoreNotImplemented, name)
+}
+
+func skipErrorName(err error) (string, bool) {
+	if notImplementedErr, ok := errors.Into[*ErrNotImplemented](err); ok {
+		return notImplementedErr.Name, true
+	}
+	if _, ok := errors.Into[*ErrUnsupportedContentTypes](err); ok {
+		return "unsupported content types", true
+	}
+	if _, ok := errors.Into[*ErrFieldsDiscriminatorInference](err); ok {
+		return "discriminator inference", true
+	}
+	return "", false
 }
 
 // ErrParseSpec reports that specification parsing failed.

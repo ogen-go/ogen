@@ -150,6 +150,12 @@ var (
 		"debug/example_tests",
 		`Enables example tests generation`,
 	}
+	SchemaEmbedStructAliases = Feature{
+		"schema/embed_struct_aliases",
+		`Generates aliases of object schemas as structs embedding the original type ` +
+			`(type Foo struct{ Bar }) instead of defined types (type Foo Bar), ` +
+			`so methods of the original type are promoted. Opt-in, since it changes generated API.`,
+	}
 	NamingCamelInitialisms = Feature{
 		"naming/camel_initialisms",
 		`Applies initialism rules (ID, URL, HTTP, ...) to camelCase identifiers, ` +
@@ -183,5 +189,6 @@ var AllFeatures = []Feature{
 	OgenOtel,
 	OgenUnimplemented,
 	DebugExampleTests,
+	SchemaEmbedStructAliases,
 	NamingCamelInitialisms,
 }

@@ -1,0 +1,35 @@
+openapi: 3.1.0
+info:
+  title: Unsupported security requirement regression
+  version: 1.0.0
+paths:
+  /skipped:
+    get:
+      operationId: skipped
+      security:
+        - ApiKey: []
+          MutualTLS: []
+      responses:
+        "204":
+          description: No content.
+  /preserved:
+    get:
+      operationId: preserved
+      security:
+        - ApiKey: []
+          MutualTLS: []
+        - Bearer: []
+      responses:
+        "204":
+          description: No content.
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+    Bearer:
+      type: http
+      scheme: bearer
+    MutualTLS:
+      type: mutualTLS

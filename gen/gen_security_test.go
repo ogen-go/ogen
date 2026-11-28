@@ -154,3 +154,174 @@ func TestGenerateSecurities(t *testing.T) {
 		require.Equal(t, wantSec.Scopes["testOp"], sec.Scopes["testOp"])
 	}
 }
+
+func TestGenerateSecuritiesRejectsIncompleteOnlyRequirement(t *testing.T) {
+	ctx := &genctx{
+		global: newTStorage(),
+		local:  newTStorage(),
+	}
+	gen := &Generator{
+		log:        zaptest.NewLogger(t),
+		securities: make(map[string]*ir.Security),
+		opt: GenerateOptions{
+			IgnoreNotImplemented: []string{"mutualTLS security"},
+		},
+	}
+
+	got, err := gen.generateSecurities(ctx, "testOp", []openapi.SecurityRequirement{
+		{
+			Schemes: []openapi.SecurityScheme{
+				{
+					Name: "apiKey",
+					Security: openapi.Security{
+						Type: "apiKey",
+						Name: "X-Api-Key",
+						In:   "header",
+					},
+				},
+				{
+					Name:     "mutualTLS",
+					Security: openapi.Security{Type: "mutualTLS"},
+				},
+			},
+		},
+	})
+	require.ErrorContains(t, err, "no supported security requirements")
+	require.ErrorContains(t, err, "mutualTLS security not implemented")
+	require.Empty(t, got.Securities)
+	require.Empty(t, got.Requirements)
+	require.Empty(t, gen.securities)
+	require.Empty(t, ctx.local.types)
+}
+
+func TestGenerateSecuritiesSkipsIncompleteAlternativeAtomically(t *testing.T) {
+	ctx := &genctx{
+		global: newTStorage(),
+		local:  newTStorage(),
+	}
+	gen := &Generator{
+		log:        zaptest.NewLogger(t),
+		securities: make(map[string]*ir.Security),
+		opt: GenerateOptions{
+			IgnoreNotImplemented: []string{"mutualTLS security"},
+		},
+	}
+
+	got, err := gen.generateSecurities(ctx, "testOp", []openapi.SecurityRequirement{
+		{
+			Schemes: []openapi.SecurityScheme{
+				{
+					Name:     "oauth2",
+					Scopes:   []string{"read"},
+					Security: openapi.Security{Type: "oauth2"},
+				},
+			},
+		},
+		{
+			Schemes: []openapi.SecurityScheme{
+				{
+					Name:     "oauth2",
+					Scopes:   []string{"admin"},
+					Security: openapi.Security{Type: "oauth2"},
+				},
+				{
+					Name: "rolledBackAPIKey",
+					Security: openapi.Security{
+						Type: "apiKey",
+						Name: "X-Rolled-Back",
+						In:   "header",
+					},
+				},
+				{
+					Name:     "mutualTLS",
+					Security: openapi.Security{Type: "mutualTLS"},
+				},
+			},
+		},
+		{
+			Schemes: []openapi.SecurityScheme{
+				{
+					Name: "apiKey",
+					Security: openapi.Security{
+						Type: "apiKey",
+						Name: "X-Api-Key",
+						In:   "header",
+					},
+				},
+			},
+		},
+	})
+	require.NoError(t, err)
+	require.Len(t, got.Securities, 2)
+	require.Len(t, got.Requirements, 2)
+	require.Equal(t, []byte{0b00000001}, []byte(got.Requirements[0]))
+	require.Equal(t, []byte{0b00000010}, []byte(got.Requirements[1]))
+	require.Equal(t, []string{"read"}, gen.securities["oauth2"].Scopes["testOp"])
+	require.Contains(t, gen.securities, "oauth2")
+	require.Contains(t, gen.securities, "apiKey")
+	require.NotContains(t, gen.securities, "rolledBackAPIKey")
+	require.Contains(t, ctx.local.types, "OAuth2")
+	require.Contains(t, ctx.local.types, "ApiKey")
+	require.NotContains(t, ctx.local.types, "RolledBackAPIKey")
+}
+
+func TestMakeOpsSkipsOperationWithoutSupportedSecurityRequirement(t *testing.T) {
+	var skipped []string
+	gen := &Generator{
+		log:        zaptest.NewLogger(t),
+		securities: make(map[string]*ir.Security),
+		tstorage:   newTStorage(),
+		features:   make(FeatureSet),
+		opt: GenerateOptions{
+			ConvenientErrors:     -1,
+			IgnoreNotImplemented: []string{"mutualTLS security"},
+			NotImplementedHook: func(name string, _ error) {
+				skipped = append(skipped, name)
+			},
+		},
+	}
+
+	response := func() openapi.Responses {
+		return openapi.Responses{
+			StatusCode: map[int]*openapi.Response{
+				204: {},
+			},
+		}
+	}
+	err := gen.makeOps([]*openapi.Operation{
+		{
+			OperationID: "secured",
+			HTTPMethod:  "GET",
+			Responses:   response(),
+			Security: []openapi.SecurityRequirement{
+				{
+					Schemes: []openapi.SecurityScheme{
+						{
+							Name: "apiKey",
+							Security: openapi.Security{
+								Type: "apiKey",
+								Name: "X-Api-Key",
+								In:   "header",
+							},
+						},
+						{
+							Name:     "mutualTLS",
+							Security: openapi.Security{Type: "mutualTLS"},
+						},
+					},
+				},
+			},
+		},
+		{
+			OperationID: "health",
+			HTTPMethod:  "GET",
+			Responses:   response(),
+		},
+	})
+	require.NoError(t, err)
+	require.Len(t, gen.operations, 1)
+	require.Equal(t, "Health", gen.operations[0].Name)
+	require.Empty(t, gen.securities)
+	require.Equal(t, []string{"mutualTLS security"}, skipped)
+	require.NotContains(t, gen.tstorage.types, "SecuredNoContent")
+}

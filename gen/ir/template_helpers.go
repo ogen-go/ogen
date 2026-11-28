@@ -156,6 +156,20 @@ func (t *Type) IsDecimal() bool {
 	return t.Primitive == Decimal
 }
 
+// IsMAC reports whether t is a MAC address, including aliases and generic wrappers.
+func (t *Type) IsMAC() bool {
+	switch t.Kind {
+	case KindAlias:
+		return t.AliasTo.IsMAC()
+	case KindGeneric:
+		return t.GenericOf.IsMAC()
+	case KindPrimitive:
+		return t.Primitive == MAC
+	default:
+		return false
+	}
+}
+
 func (t *Type) IsStringifiedFloat() bool {
 	s := t.Schema
 	return t.IsFloat() &&

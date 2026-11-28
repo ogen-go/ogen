@@ -1,0 +1,4 @@
+generator:
+  features:
+    enable:
+      - "schema/embed_struct_aliases"

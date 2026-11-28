@@ -2,8 +2,10 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ template "header" $ }}
 {{- if $.Securities }}
+{{- $serverSecurity := or $.PathsServerEnabled $.WebhookServerSecurity }}
+{{- $clientSecurity := or $.PathsClientEnabled $.WebhookClientSecurity }}
 
-{{- if $.PathsServerEnabled }}
+{{- if $serverSecurity }}
 // SecurityHandler is handler for security parameters.
 type SecurityHandler interface {
 {{- range $name, $s := $.Securities }}
@@ -31,8 +33,71 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 {{ template "security/scopes" $ }}
 
 {{ range $s := $.Securities }}
+{{- if $.PathsServerEnabled }}
 
 func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
+	{{- template "security/server" $s }}
+}
+{{- end }}
+{{- if $.WebhookServerSecurity }}
+
+func (s *WebhookServer) security{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
+	{{- template "security/server" $s }}
+}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{- if $clientSecurity }}
+// SecuritySource is provider of security values (tokens, passwords, etc.).
+type SecuritySource interface {
+{{- range $name, $s := $.Securities }}
+	// {{ $s.Type.Name }} provides {{ $name }} security value.
+	{{- template "godoc" $s.GoDoc }}
+	{{- if $s.Format.IsCustomSecurity }}
+		{{- if $.SecurityReentrantEnabled }}
+		{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request, client *Client) error
+		{{- else }}
+		{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request) error
+		{{- end }}
+	{{- else }}
+		{{- if $.SecurityReentrantEnabled }}
+		{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, client *Client) ({{ $s.Type.Name }}, error)
+		{{- else }}
+		{{ $s.Type.Name }}(ctx context.Context, operationName OperationName) ({{ $s.Type.Name }}, error)
+		{{- end }}
+	{{- end }}
+{{- end }}
+}
+
+{{- if not $serverSecurity }}
+{{ template "security/scopes" $ }}
+{{- end }}
+
+{{- if and $.WebhookClientSecurity $.SecurityReentrantEnabled }}
+{{ errorf "reentrant security is not supported for webhook clients" }}
+{{- end }}
+
+{{- range $s := $.Securities }}
+{{- if $.PathsClientEnabled }}
+func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request) error {
+	{{- template "security/client" security_elem $s $ }}
+}
+{{- end }}
+{{- if $.WebhookClientSecurity }}
+func (s *WebhookClient) security{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request) error {
+	{{- template "security/client" security_elem $s $ }}
+}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{- end }}
+{{ end }}
+
+{{ define "security/server" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Security*/ -}}
+{{- $s := $ }}
 	{{- if $s.Format.IsAPIKeySecurity }}
 		var t {{ $s.Type.Name }}
         const parameterName = {{ quote $s.ParameterName }}
@@ -104,40 +169,13 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName O
 		return nil, false, err
 	}
 	return rctx, true, err
-}
-{{- end }}
 {{- end }}
 
-{{- if $.PathsClientEnabled }}
-// SecuritySource is provider of security values (tokens, passwords, etc.).
-type SecuritySource interface {
-{{- range $name, $s := $.Securities }}
-	// {{ $s.Type.Name }} provides {{ $name }} security value.
-	{{- template "godoc" $s.GoDoc }}
+{{ define "security/client" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.SecurityElem*/ -}}
+{{- $s := $.Security }}
 	{{- if $s.Format.IsCustomSecurity }}
-		{{- if $.SecurityReentrantEnabled }}
-		{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request, client *Client) error
-		{{- else }}
-		{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request) error
-		{{- end }}
-	{{- else }}
-		{{- if $.SecurityReentrantEnabled }}
-		{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, client *Client) ({{ $s.Type.Name }}, error)
-		{{- else }}
-		{{ $s.Type.Name }}(ctx context.Context, operationName OperationName) ({{ $s.Type.Name }}, error)
-		{{- end }}
-	{{- end }}
-{{- end }}
-}
-
-{{- if not $.PathsServerEnabled }}
-{{ template "security/scopes" $ }}
-{{- end }}
-
-{{- range $s := $.Securities }}
-func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request) error {
-	{{- if $s.Format.IsCustomSecurity }}
-		{{- if $.SecurityReentrantEnabled }}
+		{{- if $.Config.SecurityReentrantEnabled }}
 		if err := s.sec.{{ $s.Type.Name }}(ctx, operationName, req, s); err != nil {
 		{{- else }}
 		if err := s.sec.{{ $s.Type.Name }}(ctx, operationName, req); err != nil {
@@ -145,7 +183,7 @@ func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName O
 			return errors.Wrap(err, {{ printf "security source %q" $s.Type.Name | quote }})
 		}
 	{{- else }}
-		{{- if $.SecurityReentrantEnabled }}
+		{{- if $.Config.SecurityReentrantEnabled }}
 		t, err := s.sec.{{ $s.Type.Name }}(ctx, operationName, s)
 		{{- else }}
 		t, err := s.sec.{{ $s.Type.Name }}(ctx, operationName)
@@ -179,12 +217,7 @@ func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName O
 		{{- end }}
 	{{- end }}
 	return nil
-}
 {{- end }}
-{{- end }}
-
-{{- end }}
-{{ end }}
 
 {{ define "security/scopes" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}

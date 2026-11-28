@@ -25,6 +25,7 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean --target test_parameters       ../../_testdata/positive/parameters.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_security         ../../_testdata/positive/security.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_sse              ../../_testdata/positive/sse.yml
+//go:generate go run ../../cmd/ogen -v --clean --target test_webhook_security ../../_testdata/positive/webhook_security.yml
 //
 //
 //go:generate go run ../../cmd/ogen -v --clean --target referenced_path_item ../../_testdata/positive/referenced_pathItem.json
@@ -55,8 +56,13 @@ package integration
 //
 // Regression test.
 //
+//go:generate go run ../../cmd/ogen -v --clean --config _config/sample_api_nsnc.yml --target test_unique_mac_addresses ../../_testdata/positive/unique_mac_addresses.yml
 //go:generate go run ../../cmd/ogen -v --clean --target test_issue1161 ../../_testdata/positive/issue1161.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_issue1495 ../../_testdata/positive/issue1495.yml
 //go:generate go run ../../cmd/ogen -v --clean --target test_raw_response ../../_testdata/positive/raw_response.yml
 //go:generate go run ../../cmd/ogen -v --clean --target test_non_primitive_enum ../../_testdata/positive/non_primitive_enum.json
 //go:generate go run ../../cmd/ogen -v --clean --target test_nullable_anyof_params ../../_testdata/positive/nullable_anyof_params.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_ref_overrides ../../_testdata/positive/ref_overrides.yml
+//go:generate go run ../../cmd/ogen -v --clean --target test_response_header ../../_testdata/positive/response_header.yaml
+//go:generate go run ../../cmd/ogen -v --clean --config _config/security_unsupported.yml --target test_security_unsupported ../../_testdata/positive/security_unsupported.yml
+//go:generate go run ../../cmd/ogen -v --clean --config _config/embed_struct_aliases.yml --target test_embed_struct_aliases ../../_testdata/positive/embed_struct_aliases.yml

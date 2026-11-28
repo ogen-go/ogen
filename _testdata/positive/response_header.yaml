@@ -1,0 +1,41 @@
+openapi: 3.0.3
+info:
+  title: >-
+    ogen fails to generate a sane go client source code.
+    It struggles with shared response headers.
+  version: 1.0.0
+paths:
+  /first:
+    get:
+      responses:
+        "429":
+          description: Too many requests
+          headers:
+            Retry-After:
+              schema:
+                anyOf:
+                  - type: integer
+                  - type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TooManyRequests"
+  /second:
+    get:
+      responses:
+        "429":
+          description: Too many requests
+          headers:
+            Retry-After:
+              schema:
+                anyOf:
+                  - type: integer
+                  - type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TooManyRequests"
+components:
+  schemas:
+    TooManyRequests:
+      type: object

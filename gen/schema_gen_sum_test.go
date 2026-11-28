@@ -239,4 +239,41 @@ func TestAllOfWithValidatorSiblings(t *testing.T) {
 	})
 }
 
+// TestAllOfMergesTimeFormatOfConflictingProperties ensures x-ogen-time-format
+// is kept when the same property is declared by several allOf subschemas and
+// the property schemas get merged.
+func TestAllOfMergesTimeFormatOfConflictingProperties(t *testing.T) {
+	const layout = "2006-01-02T15:04:05.000Z07:00"
+	newTime := func(layout string) *jsonschema.Schema {
+		s := createPrimitiveSchema(jsonschema.String, "date-time")
+		s.XOgenTimeFormat = layout
+		return s
+	}
+
+	tests := []struct {
+		name   string
+		s1, s2 string
+	}{
+		{"both", layout, layout},
+		{"first only", layout, ""},
+		{"second only", "", layout},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			a := require.New(t)
+
+			got, err := flattenAllOfSchema(&jsonschema.Schema{
+				Type: jsonschema.Object,
+				AllOf: []*jsonschema.Schema{
+					createObjectSchema(createProperty("at", newTime(tt.s1), false)),
+					createObjectSchema(createProperty("at", newTime(tt.s2), false)),
+				},
+			})
+			a.NoError(err)
+			a.Len(got.Properties, 1)
+			a.Equal(layout, got.Properties[0].Schema.XOgenTimeFormat)
+		})
+	}
+}
+
 func ptrTo[T any](v T) *T { return &v }

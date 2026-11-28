@@ -33,6 +33,14 @@ type TypeElem struct {
 	Config TemplateConfig
 }
 
+// SecurityElem is variable helper for security generation.
+type SecurityElem struct {
+	// Security is the security scheme.
+	Security *ir.Security
+	// Config is the template configuration.
+	Config TemplateConfig
+}
+
 // RouterElem is variable helper for router generation.
 type RouterElem struct {
 	// ParameterIndex is index of parameter of this route part.
@@ -267,6 +275,12 @@ func templateFunctions() template.FuncMap {
 			return TypeElem{
 				Type:   t,
 				Config: cfg,
+			}
+		},
+		"security_elem": func(s *ir.Security, cfg TemplateConfig) SecurityElem {
+			return SecurityElem{
+				Security: s,
+				Config:   cfg,
 			}
 		},
 		"ir_media": func(e ir.Encoding, t *ir.Type) ir.Media {

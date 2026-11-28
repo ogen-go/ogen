@@ -87,7 +87,7 @@ func walkResponseTypes(r *ir.Responses, walkFn func(name string, t *ir.Type) (*i
 
 			return nil
 		}(); err != nil {
-			return errors.Wrapf(err, "pattern %q", pattern)
+			return errors.Wrapf(err, "pattern %dXX", pattern)
 		}
 	}
 

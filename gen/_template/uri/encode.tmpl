@@ -22,7 +22,11 @@
 		{{ errorf "unexpected nil semantic %s" $t.NilSemantic }}
 	{{- end -}}
 {{- else if $t.IsAlias }}
+	{{- if $t.AliasEmbed }}
+	if unwrapped := {{ $var }}.{{ $t.AliasTo.Go }}; true {
+	{{- else }}
 	if unwrapped := {{ $t.AliasTo.Go }}({{ $var }}); true {
+	{{- end }}
 		{{- template "uri/encode" elem $t.AliasTo "unwrapped" }}
 	}
 	return nil

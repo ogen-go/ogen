@@ -442,6 +442,88 @@ func (o OptString) Or(d string) string {
 	return d
 }
 
+// NewOptUser returns new OptUser with value set to v.
+func NewOptUser(v User) OptUser {
+	return OptUser{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptUser is optional User.
+type OptUser struct {
+	Value User
+	Set   bool
+}
+
+// IsSet returns true if OptUser was set.
+func (o OptUser) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptUser) Reset() {
+	var v User
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptUser) SetTo(v User) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptUser) Get() (v User, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptUser) Or(d User) User {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+type OptionalContentParametersOK struct {
+	Query  OptUser `json:"query" customTag:"test"`
+	Header OptUser `json:"header" customTag:"test"`
+	Cookie OptUser `json:"cookie" customTag:"test"`
+}
+
+// GetQuery returns the value of Query.
+func (s *OptionalContentParametersOK) GetQuery() OptUser {
+	return s.Query
+}
+
+// GetHeader returns the value of Header.
+func (s *OptionalContentParametersOK) GetHeader() OptUser {
+	return s.Header
+}
+
+// GetCookie returns the value of Cookie.
+func (s *OptionalContentParametersOK) GetCookie() OptUser {
+	return s.Cookie
+}
+
+// SetQuery sets the value of Query.
+func (s *OptionalContentParametersOK) SetQuery(val OptUser) {
+	s.Query = val
+}
+
+// SetHeader sets the value of Header.
+func (s *OptionalContentParametersOK) SetHeader(val OptUser) {
+	s.Header = val
+}
+
+// SetCookie sets the value of Cookie.
+func (s *OptionalContentParametersOK) SetCookie(val OptUser) {
+	s.Cookie = val
+}
+
 type OptionalParametersObject struct {
 	Key OptString `json:"key"`
 }

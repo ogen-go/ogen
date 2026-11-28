@@ -36,6 +36,27 @@ func TestGetExternalEncoding(t *testing.T) {
 			},
 		},
 		{
+			input: "encoding/json.RawMessage",
+			want: ExternalType{
+				PackagePath: "encoding/json",
+				PackageName: "json",
+				TypeName:    "RawMessage",
+				Encode:      ExternalJSON,
+				Decode:      ExternalJSON,
+			},
+		},
+		{
+			input: "*encoding/json.RawMessage",
+			want: ExternalType{
+				PackagePath: "encoding/json",
+				PackageName: "json",
+				TypeName:    "RawMessage",
+				Encode:      ExternalJSON,
+				Decode:      ExternalJSON,
+				IsPointer:   true,
+			},
+		},
+		{
 			input: "github.com/ogen-go/ogen/_testdata/testtypes.NumberOgen",
 			want: ExternalType{
 				PackagePath: "github.com/ogen-go/ogen/_testdata/testtypes",

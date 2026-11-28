@@ -30,11 +30,17 @@ func TestNormalizeEscapedPath(t *testing.T) {
 		// Lowercase hex digits.
 		{"/foo%3fbar", "/foo%3Fbar", true},
 		{"/foo%3fbar", "/foo%3Fbar", true},
+		{"/foo%3f", "/foo%3F", true},
 
 		// Invalid.
 		{"/foo%", "", false},
 		{"/foo%3", "", false},
 		{"/foo%zz", "", false},
+		// Invalid, slow path.
+		{"/foo%3fbar%", "", false},
+		{"/foo%3fbar%3", "", false},
+		{"/foo%3fbar%zz", "", false},
+		{"/user/ern%61do%", "", false},
 	}
 	for i, tt := range tests {
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {

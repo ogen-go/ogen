@@ -29,6 +29,8 @@ components:
   schemas:
     User:
       type: object
+      x-ogen-validate:
+        minAge: 18
       properties:
         name:
           type: string

@@ -25,6 +25,7 @@ if err := d.Arr(func(d *jx.Decoder) error {
 {{- if $t.NilSemantic.Null -}}
 	switch tt := d.Next(); tt {
 	case jx.Null:
+		{{ $.Var }} = nil
 		if err := d.Skip(); err != nil {
 			return err
 		}

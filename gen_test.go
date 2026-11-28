@@ -133,6 +133,9 @@ func TestGenerate(t *testing.T) {
 			"content_header_response.json": {
 				"parameter content encoding",
 			},
+			"security_unsupported.yml": {
+				"mutualTLS security",
+			},
 		}))
 
 	t.Run("Examples", runPositive("_testdata/examples",

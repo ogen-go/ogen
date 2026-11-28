@@ -272,6 +272,14 @@ func TestJSONArray(t *testing.T) {
 			})
 		}
 	})
+	t.Run("DecodeNullResetsValue", func(t *testing.T) {
+		value := api.ArrayTest{}
+		require.NoError(t, value.Decode(jx.DecodeStr(`{"required":[],"nullable_required":["old"]}`)))
+		require.Equal(t, []string{"old"}, value.NullableRequired)
+
+		require.NoError(t, value.Decode(jx.DecodeStr(`{"required":[],"nullable_required":null}`)))
+		require.Nil(t, value.NullableRequired)
+	})
 	t.Run("Encode", func(t *testing.T) {
 		for i, tc := range []struct {
 			Value    api.ArrayTest

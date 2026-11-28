@@ -109,6 +109,7 @@
                   "ogen/otel",
                   "ogen/unimplemented",
                   "debug/example_tests",
+                  "schema/embed_struct_aliases",
                   "naming/camel_initialisms"
                 ],
                 "enumDescriptions": [
@@ -126,6 +127,7 @@
                   "Enable OpenTelemetry integration.",
                   "Generate stub handlers for unimplemented operations.",
                   "Generate debug example tests.",
+                  "Generate aliases of object schemas as structs embedding the original type, so its methods are promoted.",
                   "Apply initialism rules (ID, URL, HTTP, ...) to camelCase identifiers, e.g. userId -> UserID."
                 ]
               },
@@ -158,6 +160,7 @@
                   "ogen/otel",
                   "ogen/unimplemented",
                   "debug/example_tests",
+                  "schema/embed_struct_aliases",
                   "naming/camel_initialisms"
                 ],
                 "enumDescriptions": [
@@ -175,6 +178,7 @@
                   "Disable OpenTelemetry integration.",
                   "Disable stub handlers for unimplemented operations.",
                   "Disable debug example tests.",
+                  "Disable generating aliases of object schemas as embedding structs.",
                   "Disable applying initialism rules to camelCase identifiers."
                 ]
               },

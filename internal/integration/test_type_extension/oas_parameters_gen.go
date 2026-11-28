@@ -1306,11 +1306,6 @@ func decodeRequiredParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 			Err:  err,
 		}
 	}
-	// Set default value for query: alias.
-	{
-		val, _ := json.DecodeNative[testtypes.StringOgen](jx.DecodeStr("\"110\""))
-		params.Alias = Alias(val)
-	}
 	// Decode query: alias.
 	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
@@ -1389,11 +1384,6 @@ func decodeRequiredParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 			In:   "query",
 			Err:  err,
 		}
-	}
-	// Set default value for query: aliasPointer.
-	{
-		val, _ := json.DecodeNative[testtypes.StringOgen](jx.DecodeStr("\"130\""))
-		params.AliasPointer = AliasPointer(val)
 	}
 	// Decode query: aliasPointer.
 	if err := func() error {

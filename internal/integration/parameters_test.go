@@ -60,6 +60,14 @@ func (s *testParameters) ContentParameters(ctx context.Context, params api.Conte
 	}, nil
 }
 
+func (s *testParameters) OptionalContentParameters(ctx context.Context, params api.OptionalContentParametersParams) (*api.OptionalContentParametersOK, error) {
+	return &api.OptionalContentParametersOK{
+		Query:  params.Query,
+		Header: params.XHeader,
+		Cookie: params.Cookie,
+	}, nil
+}
+
 func (s *testParameters) PathParameter(ctx context.Context, params api.PathParameterParams) (*api.Value, error) {
 	return &api.Value{
 		Value: params.Value,
@@ -235,6 +243,85 @@ func TestOptionalArrayParameter(t *testing.T) {
 	resp, err := client.OptionalArrayParameter(ctx, api.OptionalArrayParameterParams{})
 	require.NoError(t, err)
 	require.Equal(t, "ok", resp)
+}
+
+func TestOptionalContentParameters(t *testing.T) {
+	ctx := context.Background()
+
+	t.Run("UnsetParametersAreNotSent", func(t *testing.T) {
+		s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			if q := r.URL.Query(); q.Has("query") {
+				http.Error(w, "must have not query set", http.StatusBadRequest)
+				return
+			}
+			if h := r.Header; len(h.Values("X-Header")) > 0 {
+				http.Error(w, "must have not header set", http.StatusBadRequest)
+				return
+			}
+			if _, err := r.Cookie("cookie"); err == nil {
+				http.Error(w, "must have not cookie set", http.StatusBadRequest)
+				return
+			}
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(200)
+			_, _ = io.WriteString(w, `{}`)
+		}))
+		defer s.Close()
+
+		client, err := api.NewClient(s.URL, api.WithClient(s.Client()))
+		require.NoError(t, err)
+
+		resp, err := client.OptionalContentParameters(ctx, api.OptionalContentParametersParams{
+			// Query, XHeader, and Cookie are not set.
+		})
+		require.NoError(t, err)
+		require.Equal(t, &api.OptionalContentParametersOK{}, resp)
+	})
+
+	t.Run("SetParametersRoundTrip", func(t *testing.T) {
+		h, err := api.NewServer(&testParameters{})
+		require.NoError(t, err)
+
+		s := httptest.NewServer(h)
+		defer s.Close()
+
+		client, err := api.NewClient(s.URL, api.WithClient(s.Client()))
+		require.NoError(t, err)
+
+		user := api.NewOptUser(api.User{
+			ID:       1,
+			Username: "admin",
+			Role:     api.UserRoleAdmin,
+		})
+		resp, err := client.OptionalContentParameters(ctx, api.OptionalContentParametersParams{
+			Query:   user,
+			XHeader: user,
+			Cookie:  user,
+		})
+		require.NoError(t, err)
+		require.Equal(t, &api.OptionalContentParametersOK{
+			Query:  user,
+			Header: user,
+			Cookie: user,
+		}, resp)
+	})
+
+	t.Run("UnsetParametersRoundTrip", func(t *testing.T) {
+		h, err := api.NewServer(&testParameters{})
+		require.NoError(t, err)
+
+		s := httptest.NewServer(h)
+		defer s.Close()
+
+		client, err := api.NewClient(s.URL, api.WithClient(s.Client()))
+		require.NoError(t, err)
+
+		resp, err := client.OptionalContentParameters(ctx, api.OptionalContentParametersParams{})
+		require.NoError(t, err)
+		require.False(t, resp.Query.IsSet())
+		require.False(t, resp.Header.IsSet())
+		require.False(t, resp.Cookie.IsSet())
+	})
 }
 
 func TestParametersCanBeLogged(t *testing.T) {

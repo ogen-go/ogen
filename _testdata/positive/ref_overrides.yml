@@ -1,0 +1,28 @@
+openapi: 3.1.0
+info:
+  title: Ref overrides
+  version: 0.1.0
+paths:
+  /test:
+    get:
+      operationId: test
+      responses:
+        "200":
+          description: Test
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  first:
+                    $ref: "#/components/schemas/Str"
+                    default: first
+                  second:
+                    $ref: "#/components/schemas/Str"
+                    default: second
+                  third:
+                    $ref: "#/components/schemas/Str"
+components:
+  schemas:
+    Str:
+      type: string

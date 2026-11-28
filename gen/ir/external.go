@@ -171,15 +171,15 @@ func loadExternal(pkgPath, typeName string) (pkgName string, encode, decode Exte
 		return "", -1, -1, errors.Wrap(err, "failed to load packages")
 	}
 
-	getType := func(pkgs []*packages.Package, pkgPath, typeName string) *types.Named {
+	getType := func(pkgs []*packages.Package, pkgPath, typeName string) *types.TypeName {
 		for _, pkg := range pkgs {
 			if pkg.Types == nil || pkg.Types.Scope() == nil {
 				continue
 			}
 			obj := pkg.Types.Scope().Lookup(typeName)
 			if obj != nil && obj.Pkg().Path() == pkgPath {
-				if named, ok := obj.Type().(*types.Named); ok {
-					return named
+				if name, ok := obj.(*types.TypeName); ok {
+					return name
 				}
 			}
 		}
@@ -187,13 +187,14 @@ func loadExternal(pkgPath, typeName string) (pkgName string, encode, decode Exte
 	}
 
 	getIface := func(pkgs []*packages.Package, pkgPath, typeName string) *types.Interface {
-		return getType(pkgs, pkgPath, typeName).Underlying().(*types.Interface).Complete()
+		return getType(pkgs, pkgPath, typeName).Type().Underlying().(*types.Interface).Complete()
 	}
 
-	typ := getType(pkgs, pkgPath, typeName)
-	if typ == nil {
+	name := getType(pkgs, pkgPath, typeName)
+	if name == nil {
 		return "", -1, -1, errors.New("type not found")
 	}
+	typ := name.Type()
 	ptr := types.NewPointer(typ)
 
 	for name, kind := range encoders {
@@ -209,5 +210,5 @@ func loadExternal(pkgPath, typeName string) (pkgName string, encode, decode Exte
 		}
 	}
 
-	return typ.Obj().Pkg().Name(), encode, decode, nil
+	return name.Pkg().Name(), encode, decode, nil
 }

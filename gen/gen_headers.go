@@ -19,6 +19,10 @@ func (g *Generator) generateHeaders(
 		if vetHeaderParameterName(g.log, hname, header, "Content-Type") {
 			continue
 		}
+		if parameter := ctx.lookupHeader(hname, header); parameter != nil {
+			result[hname] = parameter
+			continue
+		}
 
 		result[hname], err = g.generateParameter(ctx, name, header)
 		if err != nil {
@@ -29,6 +33,7 @@ func (g *Generator) generateHeaders(
 			delete(result, hname)
 			continue
 		}
+		ctx.saveHeader(hname, result[hname])
 	}
 
 	return result, nil

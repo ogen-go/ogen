@@ -75,6 +75,25 @@ func (t TemplateConfig) AnyServerEnabled() bool {
 	return t.PathsServerEnabled || t.WebhookServerEnabled
 }
 
+// WebhookServerSecurity returns true, if webhooks server is enabled and some webhook requires security.
+func (t TemplateConfig) WebhookServerSecurity() bool {
+	return t.WebhookServerEnabled && t.webhooksHaveSecurity()
+}
+
+// WebhookClientSecurity returns true, if webhooks client is enabled and some webhook requires security.
+func (t TemplateConfig) WebhookClientSecurity() bool {
+	return t.WebhookClientEnabled && t.webhooksHaveSecurity()
+}
+
+func (t TemplateConfig) webhooksHaveSecurity() bool {
+	for _, op := range t.Webhooks {
+		if len(op.Security.Securities) > 0 {
+			return true
+		}
+	}
+	return false
+}
+
 // AnyInstrumentable returns true, if OpenTelemetry integration enabled and there is client/server to instrument.
 func (t TemplateConfig) AnyInstrumentable() bool {
 	return t.OpenTelemetryEnabled && (t.AnyClientEnabled() || t.AnyServerEnabled())

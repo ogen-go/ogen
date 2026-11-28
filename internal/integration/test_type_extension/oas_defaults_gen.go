@@ -63,15 +63,3 @@ func (s *OptionalOK) setDefaults() {
 		s.AliasPointer.SetTo(AliasPointer(val))
 	}
 }
-
-// setDefaults set default value of fields.
-func (s *RequiredOK) setDefaults() {
-	{
-		val, _ := json.DecodeNative[testtypes.StringOgen](jx.DecodeStr("\"110\""))
-		s.Alias = Alias(val)
-	}
-	{
-		val, _ := json.DecodeNative[testtypes.StringOgen](jx.DecodeStr("\"130\""))
-		s.AliasPointer = AliasPointer(val)
-	}
-}
