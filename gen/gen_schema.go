@@ -177,10 +177,12 @@ func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchem
 	}
 
 	types := ctx.local.types
-	for _, key := range xmaps.SortedKeys(types) {
-		if t := types[key]; t.IsStruct() {
-			if err := checkStructRecursions(t); err != nil {
-				return errors.Wrap(err, t.Name)
+	for _, final := range []bool{false, true} {
+		for _, key := range xmaps.SortedKeys(types) {
+			if t := types[key]; t.IsStruct() {
+				if err := checkStructRecursions(t, final); err != nil {
+					return errors.Wrap(err, t.Name)
+				}
 			}
 		}
 	}
