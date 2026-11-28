@@ -255,51 +255,15 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		}
 	}
 
-	var (
-		oneOf                   *ir.Type
-		anyOf                   *ir.Type
-		checkOnlyObjectVariants = func(sum []*jsonschema.Schema) error {
-			for _, s := range sum {
-				if s.Type == jsonschema.Object {
-					continue
-				}
-
-				ptr := s.Pointer
-				err := errors.Errorf("can't merge object with %s", s.Type)
-
-				pos, ok := ptr.Position()
-				if !ok {
-					return err
-				}
-
-				return &location.Error{
-					File: ptr.File(),
-					Pos:  pos,
-					Err:  err,
-				}
-			}
-			return nil
-		}
-	)
 	switch {
 	case len(schema.AnyOf) > 0:
-		side := schema.Type == jsonschema.Object
-		sumName := name
-		if side {
-			sumName += "Sum"
-		}
-		t, err := g.anyOf(sumName, schema, side)
-		if err != nil {
-			return nil, errors.Wrap(errors.Wrap(err, "anyOf"), sumName)
-		}
-
-		if !side {
+		if schema.Type != jsonschema.Object {
+			t, err := g.anyOf(name, schema, false)
+			if err != nil {
+				return nil, errors.Wrap(errors.Wrap(err, "anyOf"), name)
+			}
 			return t, nil
 		}
-		if err := checkOnlyObjectVariants(schema.AnyOf); err != nil {
-			return nil, err
-		}
-		anyOf = t
 	case len(schema.AllOf) > 0:
 		t, err := g.allOf(name, schema)
 		if err != nil {
@@ -307,23 +271,13 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		}
 		return t, nil
 	case len(schema.OneOf) > 0:
-		side := schema.Type == jsonschema.Object
-		sumName := name
-		if side {
-			sumName += "Sum"
-		}
-		t, err := g.oneOf(sumName, schema, side)
-		if err != nil {
-			return nil, errors.Wrap(errors.Wrap(err, "oneOf"), sumName)
-		}
-
-		if !side {
+		if schema.Type != jsonschema.Object {
+			t, err := g.oneOf(name, schema, false)
+			if err != nil {
+				return nil, errors.Wrap(errors.Wrap(err, "oneOf"), name)
+			}
 			return t, nil
 		}
-		if err := checkOnlyObjectVariants(schema.OneOf); err != nil {
-			return nil, err
-		}
-		oneOf = t
 	case len(schema.Enum) > 0:
 		switch schema.Type {
 		case jsonschema.String,
@@ -375,6 +329,54 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		})
 		s.Validators.SetObject(schema)
 		s.Validators.SetOgenValidate(schema)
+
+		var (
+			oneOf                   *ir.Type
+			anyOf                   *ir.Type
+			checkOnlyObjectVariants = func(sum []*jsonschema.Schema) error {
+				for _, s := range sum {
+					if s.Type == jsonschema.Object {
+						continue
+					}
+
+					ptr := s.Pointer
+					err := errors.Errorf("can't merge object with %s", s.Type)
+
+					pos, ok := ptr.Position()
+					if !ok {
+						return err
+					}
+
+					return &location.Error{
+						File: ptr.File(),
+						Pos:  pos,
+						Err:  err,
+					}
+				}
+				return nil
+			}
+		)
+		// Register the outer object before generating its variants so a
+		// variant can reference this object without generating its sum again.
+		sumName := name + "Sum"
+		switch {
+		case len(schema.AnyOf) > 0:
+			anyOf, err = g.anyOf(sumName, schema, true)
+			if err != nil {
+				return nil, errors.Wrap(errors.Wrap(err, "anyOf"), sumName)
+			}
+			if err := checkOnlyObjectVariants(schema.AnyOf); err != nil {
+				return nil, err
+			}
+		case len(schema.OneOf) > 0:
+			oneOf, err = g.oneOf(sumName, schema, true)
+			if err != nil {
+				return nil, errors.Wrap(errors.Wrap(err, "oneOf"), sumName)
+			}
+			if err := checkOnlyObjectVariants(schema.OneOf); err != nil {
+				return nil, err
+			}
+		}
 
 		type fieldSlot struct {
 			// Stores spec name of the field.
