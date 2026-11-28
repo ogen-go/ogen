@@ -64,3 +64,22 @@ func Test_hexEncode(t *testing.T) {
 	hexEncode(&dst, u)
 	a.Equal(u.String(), string(dst[:]))
 }
+
+func TestUUIDOf(t *testing.T) {
+	// Any [16]byte UUID type, like the standard library uuid.UUID.
+	type myUUID [16]byte
+
+	a := require.New(t)
+	want := uuid.New()
+
+	e := &jx.Encoder{}
+	EncodeUUIDOf(e, myUUID(want))
+	a.Equal(`"`+want.String()+`"`, e.String())
+
+	got, err := DecodeUUIDOf[myUUID](jx.DecodeBytes(e.Bytes()))
+	a.NoError(err)
+	a.Equal(myUUID(want), got)
+
+	_, err = DecodeUUIDOf[myUUID](jx.DecodeStr(`"not-uuid"`))
+	a.Error(err)
+}

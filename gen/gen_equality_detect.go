@@ -360,7 +360,7 @@ func categorizeFieldType(t *ir.Type) ir.FieldTypeCategory {
 		switch t.Primitive {
 		case ir.String, ir.Int, ir.Int8, ir.Int16, ir.Int32, ir.Int64,
 			ir.Uint, ir.Uint8, ir.Uint16, ir.Uint32, ir.Uint64,
-			ir.Float32, ir.Float64, ir.Bool, ir.ByteSlice, ir.Duration, ir.Time, ir.UUID, ir.URL:
+			ir.Float32, ir.Float64, ir.Bool, ir.ByteSlice, ir.Duration, ir.Time, ir.UUID, ir.StdUUID, ir.URL:
 			return ir.FieldTypePrimitive
 		default:
 			return ir.FieldTypePrimitive

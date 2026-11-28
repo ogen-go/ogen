@@ -23,6 +23,9 @@ func (t *Type) EncodeFn() string {
 		return naming.Capitalize(t.Primitive.String())
 	case UUID, Time, MAC, IP, Duration, URL, Decimal:
 		return naming.AfterDot(t.Primitive.String())
+	case StdUUID:
+		// Generic helpers, see conv.UUIDOfToString and conv.ToUUIDOf.
+		return "UUIDOf"
 	default:
 		return ""
 	}
@@ -130,7 +133,19 @@ func (t Type) FromString() string {
 	if encodeFn == "" {
 		panic(fmt.Sprintf("unexpected %+v", t))
 	}
+	if t.isStdUUID() {
+		// Type argument of a generic decoder can't be inferred.
+		return "To" + encodeFn + "[" + StdUUID.String() + "]"
+	}
 	return "To" + encodeFn
+}
+
+// isStdUUID reports whether t or its array item is the standard library uuid.UUID.
+func (t Type) isStdUUID() bool {
+	if t.Is(KindArray) && t.Item != nil {
+		return t.Item.isStdUUID()
+	}
+	return t.Primitive == StdUUID
 }
 
 func (t *Type) IsInteger() bool {

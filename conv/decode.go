@@ -143,6 +143,12 @@ func ToUUID(s string) (uuid.UUID, error) {
 	return uuid.Parse(s)
 }
 
+// ToUUIDOf parses UUID of type T, e.g. the standard library uuid.UUID.
+func ToUUIDOf[T ~[16]byte](s string) (T, error) {
+	v, err := uuid.Parse(s)
+	return T(v), err
+}
+
 func ToMAC(s string) (net.HardwareAddr, error) {
 	return net.ParseMAC(s)
 }
@@ -339,6 +345,11 @@ func ToBoolArray(a []string) ([]bool, error) {
 
 func ToUUIDArray(a []string) ([]uuid.UUID, error) {
 	return decodeArray(a, ToUUID)
+}
+
+// ToUUIDOfArray parses an array of UUIDs of type T, e.g. the standard library uuid.UUID.
+func ToUUIDOfArray[T ~[16]byte](a []string) ([]T, error) {
+	return decodeArray(a, ToUUIDOf[T])
 }
 
 func ToMACArray(a []string) ([]net.HardwareAddr, error) {

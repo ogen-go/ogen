@@ -29,7 +29,7 @@ func (t *Type) FakeValue() string {
 		return "time.Now()"
 	case Duration:
 		return "time.Duration(5 * time.Second)"
-	case UUID:
+	case UUID, StdUUID:
 		return "uuid.New()"
 	case MAC:
 		return `net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}`

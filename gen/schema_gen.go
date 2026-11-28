@@ -36,6 +36,7 @@ type schemaGen struct {
 	request     bool            // true if generating for request body
 	initialisms bool            // NamingCamelInitialisms feature: apply initialism rules to camelCase identifiers
 	rules       *naming.Ruleset // custom initialism ruleset, nil means package default
+	stdUUID     bool            // FormatStdlibUUID feature: use the standard library uuid.UUID
 
 	log *zap.Logger
 }

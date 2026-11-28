@@ -56,6 +56,9 @@ func DurationToString(v time.Duration) string { return v.String() }
 
 func UUIDToString(v uuid.UUID) string { return v.String() }
 
+// UUIDOfToString formats UUID of type T, e.g. the standard library uuid.UUID.
+func UUIDOfToString[T ~[16]byte](v T) string { return uuid.UUID(v).String() }
+
 func MACToString(v net.HardwareAddr) string { return v.String() }
 
 func AddrToString(v netip.Addr) string { return v.String() }
@@ -181,6 +184,11 @@ func BoolArrayToString(vs []bool) []string {
 
 func UUIDArrayToString(vs []uuid.UUID) []string {
 	return encodeArray(vs, UUIDToString)
+}
+
+// UUIDOfArrayToString formats an array of UUIDs of type T, e.g. the standard library uuid.UUID.
+func UUIDOfArrayToString[T ~[16]byte](vs []T) []string {
+	return encodeArray(vs, UUIDOfToString[T])
 }
 
 func MACArrayToString(vs []net.HardwareAddr) []string {
