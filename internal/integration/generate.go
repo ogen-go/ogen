@@ -67,3 +67,5 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean --target test_response_header ../../_testdata/positive/response_header.yaml
 //go:generate go run ../../cmd/ogen -v --clean --config _config/security_unsupported.yml --target test_security_unsupported ../../_testdata/positive/security_unsupported.yml
 //go:generate go run ../../cmd/ogen -v --clean --config _config/embed_struct_aliases.yml --target test_embed_struct_aliases ../../_testdata/positive/embed_struct_aliases.yml
+
+//go:generate go run ../../cmd/ogen --clean --config _config/sample_api_nsnc.yml --target test_required_recursive ../../_testdata/positive/required_recursive.yml
