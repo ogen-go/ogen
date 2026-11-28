@@ -131,6 +131,11 @@ func KeepAliveEvery[E any](ctx context.Context, s Sender[E], interval time.Durat
 			return nil
 		case <-ticker.C:
 			if err := s.Comment(ctx, comment); err != nil {
+				if ctx.Err() != nil {
+					// Ticker and cancellation may race, the select does not
+					// prioritize ctx.Done.
+					return nil
+				}
 				return err
 			}
 		}
