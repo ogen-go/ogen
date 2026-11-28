@@ -3,7 +3,7 @@
 package api
 
 import (
-	"github.com/google/uuid"
+	"uuid"
 )
 
 // SetFake set fake values.
