@@ -329,9 +329,9 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 
 	{{- if not $op.HasRawResponse }}
 
-	if err := encode{{ $op.Name }}Response(response, w, {{ if $otel }}span{{ end }}); err != nil {
+	if err := encode{{ $op.Name }}Response({{ if $op.HasSSEStreamResponse }}ctx, {{ end }}response, w, {{ if $otel }}span{{ end }}); err != nil {
 		defer recordError("EncodeResponse", err)
-		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse){{ if $op.HasSSEStreamResponse }} && !errors.Is(err, ht.ErrResponseSent){{ end }} {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
 		return
