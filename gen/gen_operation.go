@@ -62,20 +62,6 @@ func (g *Generator) generateOperation(ctx *genctx, webhookName string, spec *ope
 		return nil, errors.Wrap(err, "responses")
 	}
 
-	// Report unimplemented SSE server response encoding here, during IR
-	// generation, so that `ignore_not_implemented` skips the operation
-	// cleanly and the error is raised before the target directory is
-	// cleaned, instead of failing at template execution time.
-	if op.HasSSEStreamResponse() {
-		serverEnabled := g.features.Has(PathsServer)
-		if webhookName != "" {
-			serverEnabled = g.features.Has(WebhooksServer)
-		}
-		if serverEnabled {
-			return nil, errors.Wrap(&ErrNotImplemented{Name: "sse server response encoding"}, "responses")
-		}
-	}
-
 	op.Security, err = g.generateSecurities(ctx, opName, spec.Security)
 	if err != nil {
 		return nil, errors.Wrap(err, "security")

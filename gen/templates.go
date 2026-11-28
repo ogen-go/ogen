@@ -25,6 +25,14 @@ type OperationElem struct {
 	Config TemplateConfig
 }
 
+// TypeElem is variable name for generating per-type functions.
+type TypeElem struct {
+	// Type is the type.
+	Type *ir.Type
+	// Config is the template configuration.
+	Config TemplateConfig
+}
+
 // SecurityElem is variable helper for security generation.
 type SecurityElem struct {
 	// Security is the security scheme.
@@ -263,13 +271,18 @@ func templateFunctions() template.FuncMap {
 				Config:    cfg,
 			}
 		},
+		"type_elem": func(t *ir.Type, cfg TemplateConfig) TypeElem {
+			return TypeElem{
+				Type:   t,
+				Config: cfg,
+			}
+		},
 		"security_elem": func(s *ir.Security, cfg TemplateConfig) SecurityElem {
 			return SecurityElem{
 				Security: s,
 				Config:   cfg,
 			}
 		},
-		"sse_server_response_encoding": sseServerResponseEncoding,
 		"ir_media": func(e ir.Encoding, t *ir.Type) ir.Media {
 			return ir.Media{
 				Encoding: e,
