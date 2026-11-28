@@ -133,6 +133,7 @@ func (c *Client) sendFooBarBazGet(ctx context.Context) (res string, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/foo/bar/baz"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -210,6 +211,7 @@ func (c *Client) sendFooBarQuxGet(ctx context.Context) (res string, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/foo/bar/qux"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -306,6 +308,7 @@ func (c *Client) sendFooParamXyzGet(ctx context.Context, params FooParamXyzGetPa
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/foo/{param}/xyz"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

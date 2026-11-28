@@ -191,6 +191,7 @@ func (c *Client) sendCaching(ctx context.Context, params CachingParams) (res Wor
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/cached-worlds"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -272,6 +273,7 @@ func (c *Client) sendDB(ctx context.Context) (res *WorldObject, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/db"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -354,6 +356,7 @@ func (c *Client) sendJSON(ctx context.Context) (res *HelloWorld, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/json"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -455,6 +458,7 @@ func (c *Client) sendQueries(ctx context.Context, params QueriesParams) (res Wor
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/queries"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -555,6 +559,7 @@ func (c *Client) sendUpdates(ctx context.Context, params UpdatesParams) (res Wor
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/updates"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

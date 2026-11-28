@@ -37,6 +37,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // GET /customSecurity
 func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/customSecurity"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -207,6 +208,7 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 //
 // GET /disjointSecurity
 func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/disjointSecurity"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -429,6 +431,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 //
 // GET /intersectSecurity
 func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/intersectSecurity"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -634,6 +637,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 //
 // GET /optionalSecurity
 func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/optionalSecurity"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

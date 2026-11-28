@@ -147,6 +147,7 @@ func (c *Client) sendQueryWithAdditionalProperties(ctx context.Context, params Q
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/query"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

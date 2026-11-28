@@ -126,6 +126,7 @@ func (c *Client) sendGetConfig(ctx context.Context) (res Config, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/config"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

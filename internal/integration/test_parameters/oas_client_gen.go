@@ -261,6 +261,7 @@ func (c *Client) sendComplicatedParameterNameGet(ctx context.Context, params Com
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/complicatedParameterName"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -383,6 +384,7 @@ func (c *Client) sendContentParameters(ctx context.Context, params ContentParame
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/contentParameters/{path}"
 
 	stage = "EncodeHeaderParams"
 	h := uri.NewHeaderEncoder(r.Header)
@@ -501,6 +503,7 @@ func (c *Client) sendCookieParameter(ctx context.Context, params CookieParameter
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/cookieParameter"
 
 	stage = "EncodeCookieParams"
 	cookie := uri.NewCookieEncoder(r)
@@ -597,6 +600,7 @@ func (c *Client) sendHeaderParameter(ctx context.Context, params HeaderParameter
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/headerParameter"
 
 	stage = "EncodeHeaderParams"
 	h := uri.NewHeaderEncoder(r.Header)
@@ -689,6 +693,7 @@ func (c *Client) sendObjectCookieParameter(ctx context.Context, params ObjectCoo
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/objectCookieParameter"
 
 	stage = "EncodeCookieParams"
 	cookie := uri.NewCookieEncoder(r)
@@ -821,6 +826,7 @@ func (c *Client) sendObjectQueryParameter(ctx context.Context, params ObjectQuer
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/objectQueryParameter"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -929,6 +935,7 @@ func (c *Client) sendOptionalArrayParameter(ctx context.Context, params Optional
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/optionalArrayParameter"
 
 	stage = "EncodeHeaderParams"
 	h := uri.NewHeaderEncoder(r.Header)
@@ -1301,6 +1308,7 @@ func (c *Client) sendOptionalParameters(ctx context.Context, params OptionalPara
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/optionalParameters"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1399,6 +1407,7 @@ func (c *Client) sendPathParameter(ctx context.Context, params PathParameterPara
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/pathParameter/{value}"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1515,6 +1524,7 @@ func (c *Client) sendSameName(ctx context.Context, params SameNameParams) (res *
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/same_name/{param}"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1613,6 +1623,7 @@ func (c *Client) sendSimilarNames(ctx context.Context, params SimilarNamesParams
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/similarNames"
 
 	stage = "EncodeHeaderParams"
 	h := uri.NewHeaderEncoder(r.Header)
@@ -1757,6 +1768,7 @@ func (c *Client) sendSpaceDelimitedParameter(ctx context.Context, params SpaceDe
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/spaceDelimitedParameter"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

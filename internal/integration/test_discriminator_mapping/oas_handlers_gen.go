@@ -39,6 +39,7 @@ func (c *codeRecorder) Unwrap() http.ResponseWriter {
 //
 // POST /pets
 func (s *Server) handleCreatePetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/pets"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -182,6 +183,7 @@ func (s *Server) handleCreatePetRequest(args [0]string, argsEscaped bool, w http
 //
 // GET /notifications
 func (s *Server) handleListNotificationsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/notifications"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -306,6 +308,7 @@ func (s *Server) handleListNotificationsRequest(args [0]string, argsEscaped bool
 //
 // GET /pets
 func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/pets"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
@@ -430,6 +433,7 @@ func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.
 //
 // GET /vehicles
 func (s *Server) handleListVehiclesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	r.Pattern = "/vehicles"
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{

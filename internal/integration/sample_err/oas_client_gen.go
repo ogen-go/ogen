@@ -136,6 +136,7 @@ func (c *Client) sendDataCreate(ctx context.Context, request OptData) (res *Data
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/data"
 	if err := encodeDataCreateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -219,6 +220,7 @@ func (c *Client) sendDataGet(ctx context.Context) (res *Data, err error) {
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/data"
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

@@ -136,6 +136,7 @@ func (c *Client) sendFooGet(ctx context.Context, params FooGetParams) (res *FooG
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/foo"
 
 	stage = "EncodeHeaderParams"
 	h := uri.NewHeaderEncoder(r.Header)
@@ -227,6 +228,7 @@ func (c *Client) sendFooPatch(ctx context.Context, request FooPatchReq) (res *Fo
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/foo"
 	if err := encodeFooPatchRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -352,6 +354,7 @@ func (c *Client) sendFooPost(ctx context.Context, request FooPostReq) (res *FooP
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/foo"
 	if err := encodeFooPostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}

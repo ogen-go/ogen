@@ -126,6 +126,7 @@ func (c *Client) sendEcho(ctx context.Context, request EchoReq) (res EchoOK, err
 	if err != nil {
 		return res, errors.Wrap(err, "create request")
 	}
+	r.Pattern = "/echo"
 	if err := encodeEchoRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
